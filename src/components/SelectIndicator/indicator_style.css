@@ -1,0 +1,18 @@
+.indicator{
+    background:white;       
+}
+
+.textfont{
+    font-size:16px;
+}
+
+.subtextfont{
+    font-size:14px;
+}
+
+.headIndicator{
+    background-color:green;
+    color:white;
+    border-radius:2px;
+    padding:7px;
+}
