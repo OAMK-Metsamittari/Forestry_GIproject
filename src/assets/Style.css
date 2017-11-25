@@ -1,3 +1,31 @@
+/* indicator begin */
+
+.indicator{
+    background:white;       
+}
+
+.textfont{
+    font-size:16px;
+}
+
+.subtextfont{
+    font-size:14px;
+}
+
+.headIndicator{
+    background-color:#00af66;
+    color:white;
+    border-radius:2px;
+    padding:7px;
+}
+
+.whole{
+    margin-top:20px;
+}
+
+/* indicator end */
+
+/*header begin*/
 .navbar-custom {
     background: #00af66;
     color:#ffffff;
@@ -38,3 +66,21 @@
  .language{
      margin-top:20px;
  }
+ /* header end */
+
+ /* graph begin */
+
+ .sidespace{
+    margin:0px 25px 10px 0px;
+}
+
+
+.graphshow{
+    margin:12px;
+}
+
+.bggraph{
+    background: white;
+}
+
+ /* graph end */

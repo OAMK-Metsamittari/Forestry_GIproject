@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './graph_style.css';
-import logo from './graph.jpg';
+
+
 
 
 class Graph extends Component {
@@ -10,7 +10,7 @@ class Graph extends Component {
      <div className="">
       <div className="row  sidespace">
         <div className="col-md-12 well well-sm bggraph">
-            <img src={logo}/>
+            <img src={require("../assets/graph.jpg")}/>
         </div>        
       </div>
     </div>

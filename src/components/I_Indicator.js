@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-class Indicator extends Component {
+class I_Indicator extends Component {
   render() {
     return (
       <div className="row">
@@ -15,4 +15,4 @@ class Indicator extends Component {
   }
 }
 
-export default Indicator;
+export default I_Indicator;

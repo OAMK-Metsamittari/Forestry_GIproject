@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-class CollectProduct extends Component {
+class I_CollectProduct extends Component {
   render() {
     return (
       <div className="row">
@@ -18,4 +18,4 @@ class CollectProduct extends Component {
   }
 }
 
-export default CollectProduct;
+export default I_CollectProduct;

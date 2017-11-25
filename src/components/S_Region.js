@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-class Region extends Component {
+class S_Region extends Component {
     render () {
         return (
             <div className="row">
                 <div className="col-md-12">
                     <h2 className="headIndicator">Select Scenarios</h2>
-                    <div class="form-group">
-                    <label for="textfont">Region</label>
+                    <div className="form-group">
+                    <label className="textfont">Region</label>
                     <select className="form-control">
                         <option>1</option>                        
                     </select>
@@ -18,4 +18,4 @@ class Region extends Component {
     }
 }
 
-export default Region
+export default S_Region

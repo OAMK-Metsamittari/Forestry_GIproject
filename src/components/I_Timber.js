@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-class Timber extends Component {
+class I_Timber extends Component {
   render() {
     return (
       <div className="row">
@@ -20,4 +20,4 @@ class Timber extends Component {
   }
 }
 
-export default Timber;
+export default I_Timber;

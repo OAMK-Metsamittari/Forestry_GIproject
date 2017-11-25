@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './indicator_style.css';
 
 
-class Carbon extends Component {
+
+class I_OtherIndicator extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-md-12 textfont">Carbon</div>        
+        <div className="col-md-12 textfont">Other</div>        
       </div>
     );
   }
 }
 
-export default Carbon;
+export default I_OtherIndicator;

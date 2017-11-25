@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class Years extends Component {
+class S_Seranio extends Component {
     render () {
         return (
             <div>
-                Years
+                Seranio
             </div>
         )
     }
 }
 
-export default Years
+export default S_Seranio

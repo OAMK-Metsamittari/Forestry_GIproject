@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './header_style.css';
-import logo from './logo.png';
 class Region extends Component {
     render () {
         return (
@@ -10,12 +8,12 @@ class Region extends Component {
                 <div className="navbar navbar-custom header">
                     <div className="container-fluid">
                         <div className="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-dropdown" aria-expanded="false">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
+                            <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-dropdown" aria-expanded="false">
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
                         </button>
-                            <a className="navbar-brand" href="#"><img src={logo} className="logo"/></a>
+                            <a className="navbar-brand" href="#"><img src={require("../assets/logo.png")} className="logo"/></a>
                         </div>
                         <div className="collapse navbar-collapse" id="navbar-dropdown">
                             <ul className="nav navbar-nav navbar-right">
