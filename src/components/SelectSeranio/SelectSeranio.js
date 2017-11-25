@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 class SelectSeranio extends Component {
     render () {
         return (
-            <div class="col-sm-3 sidenav">
+            <div className="col-sm-3 sidenav">
 
                 <Calculations />
                 <Catagory />

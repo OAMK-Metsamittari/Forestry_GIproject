@@ -5,8 +5,8 @@ class ForestRegion extends Component {
         return (
             <div className="ForestRegion">
                
-               <div class="form-group">
-                    <label for="sel1">Forest Region</label>
+                <div className="form-group">
+                    <label htmlFor="sel1">Forest Region</label>
                     <select className="form-control" id="sel1">
                         <option>1</option>
                         
@@ -17,4 +17,4 @@ class ForestRegion extends Component {
     }
 }
 
-export default ForestRegion
+export default ForestRegion;
