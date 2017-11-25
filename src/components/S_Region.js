@@ -4,8 +4,7 @@ class S_Region extends Component {
     render () {
         return (
             <div className="row">
-                <div className="col-md-12">
-                    <h2 className="headIndicator">Select Scenarios</h2>
+                <div className="col-md-12">                    
                     <div className="form-group">
                     <label className="textfont">Region</label>
                     <select className="form-control">

@@ -8,21 +8,6 @@ import './assets/Style.css';
 import regionLevelData from './Data/regionLevel';
 
 class App extends Component {
-
-  constructor(props){
-    super(props);
-    this.state = {
-        regionLevel:[]
-    }   
-         
-  }
-
-componentDidMount(){
-    regionLevelData.getRegionLevel().then(result=>{
-        console.log(result);
-      this.setState({regionLevel:result})
-    })
-  }
   
   render() {
     return (
