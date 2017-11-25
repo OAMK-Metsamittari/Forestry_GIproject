@@ -1,0 +1,19 @@
+.jumbotron{
+    margin: 0;
+    height: auto;
+    
+}
+h3{
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+img{
+    padding:0.3rem;
+}
+.btn{
+    border-radius: 10%;
+    
+}
+.btn:focus{
+    outline: none;
+}
