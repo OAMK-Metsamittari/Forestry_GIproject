@@ -11,8 +11,14 @@
 }
 
 .headIndicator{
-    background-color:green;
+    background-color:#00af66;
     color:white;
     border-radius:2px;
     padding:7px;
 }
+
+.whole{
+    margin-top:20px;
+}
+
+

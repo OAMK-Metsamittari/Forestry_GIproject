@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class Catagory extends Component {
+class Seranio extends Component {
     render () {
         return (
             <div>
-                Catagory
+                Seranio
             </div>
         )
     }
 }
 
-export default Catagory
+export default Seranio

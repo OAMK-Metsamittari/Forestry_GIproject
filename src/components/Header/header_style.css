@@ -1,0 +1,40 @@
+.navbar-custom {
+    background: #00af66;
+    color:#ffffff;
+    border-radius:0;  
+}
+
+.navbar-custom .navbar-nav > li > a:hover {
+    color:#00af66;
+    background:white; 
+    
+   
+  }
+
+  .navbar-custom .navbar-nav > li > a {
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    font-family: sans-serif;
+   
+  }
+
+ .logo{
+    height:60px;
+    width:120px; 
+    background-color: white;  
+    border-radius: 10px;  
+         
+  }
+
+  .logo:hover{
+    border:1px solid #00af66;    
+  }
+
+  .icon-bar {
+    background-color:white !important;
+ }
+
+ .language{
+     margin-top:20px;
+ }

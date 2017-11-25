@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class Variables extends Component {
+class SeranioCollection extends Component {
     render () {
         return (
             <div>
-                Variables
+                SeranioCollection
             </div>
         )
     }
 }
 
-export default Variables
+export default SeranioCollection

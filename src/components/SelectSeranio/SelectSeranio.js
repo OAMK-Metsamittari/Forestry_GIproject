@@ -1,21 +1,19 @@
 import React, { Component } from 'react'
-import Calculations from './Calculations';
-import Catagory from './Catagory';
-import ForestRegion from './ForestRegion';
-import Variables from './Variables';
-
+import Region from './Region';
+import SeranioCollection from './SeranioCollection';
+import RegionLevel from './RegionLevel';
+import Seranio from './Seranio';
 import Years from './Years';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 class SelectSeranio extends Component {
     render () {
         return (
-            <div class="col-sm-3 sidenav">
-
-                <Calculations />
-                <Catagory />
-                <ForestRegion />
-                <Calculations />
-                <Variables />
+            <div class="col-sm-12 well well-sm indicator">
+                <Region />
+                <RegionLevel />
+                <SeranioCollection />               
+                <Seranio />
                 <Years />
             </div>
         )
