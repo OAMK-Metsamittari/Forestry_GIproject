@@ -5,8 +5,10 @@
   "dependencies": {
     "axios": "^0.17.1",
     "bootstrap": "^3.3.7",
+    "highcharts": "^6.0.3",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "react-highcharts": "^15.0.0",
     "react-scripts": "1.0.17"
   },
   "scripts": {

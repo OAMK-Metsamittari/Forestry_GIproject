@@ -1,16 +1,52 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+const ReactHighcharts = require('react-highcharts');
 
 
 
 class Graph extends Component {
   render() {
+    const config = {      
+          chart: {
+              type: 'column'
+          },
+      
+          title: {
+              text: 'Styling axes and columns'
+          },
+      
+          yAxis: [{
+              className: 'highcharts-color-0',
+              title: {
+                  text: 'Primary axis'
+              }
+          }, {
+              className: 'highcharts-color-1',
+              opposite: true,
+              title: {
+                  text: 'Secondary axis'
+              }
+          }],
+      
+          plotOptions: {
+              column: {
+                  borderRadius: 5
+              }
+          },
+      
+          series: [{
+              data: [1, 3, 2, 4]
+          }, {
+              data: [324, 124, 547, 221],
+              yAxis: 1
+          }]
+      
+      }
     return (
      <div className="">
       <div className="row  sidespace">
         <div className="col-md-12 well well-sm bggraph">
-            <img src={require("../assets/graph.jpg")}/>
+           <ReactHighcharts config = {config}></ReactHighcharts>
         </div>        
       </div>
     </div>

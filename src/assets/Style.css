@@ -1,5 +1,8 @@
 /* indicator begin */
 
+.forestrywhole{
+    
+}
 .indicator{
     background:white;       
 }
@@ -16,7 +19,7 @@
     background-color:#00af66;
     color:white;
     border-radius:2px;
-    padding:7px;
+    padding:7px;    
 }
 
 .whole{
@@ -29,7 +32,7 @@
 .navbar-custom {
     background: #00af66;
     color:#ffffff;
-    border-radius:0;  
+    border-radius:0;     
 }
 
 .navbar-custom .navbar-nav > li > a:hover {
