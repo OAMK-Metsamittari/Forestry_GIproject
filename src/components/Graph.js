@@ -43,8 +43,8 @@ class Graph extends Component {
       
       }
     return (
-     <div className="">
-      <div className="row  sidespace">
+     <div >
+      <div className="row sidespace">
         <div className="col-md-12 well well-sm bggraph">
            <ReactHighcharts config = {config}></ReactHighcharts>
         </div>        
