@@ -27,6 +27,10 @@ class App extends Component {
       region:[],
       regionLevel:[],
       year:[]
+<<<<<<< HEAD
+=======
+
+>>>>>>> e4121cdc9a185516b5ca075667fa76a45efed11b
     }
 
   this.selectedRegionLevelId =  this.selectedRegionLevelId.bind(this);    
