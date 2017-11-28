@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-class S_Seranio extends Component {
+class S_Seranio  extends Component {
     render () {
-        const { seranio} =  this.props;
+        const { scenario} =  this.props;
         return (
             <div className="row">
                 <div className="col-md-12" >
@@ -12,7 +12,7 @@ class S_Seranio extends Component {
                      <label className="textfont">scenarios</label> 
                         <select className="form-control"  multiple={true}>
                             {            
-                            seranio.map(element=>
+                            scenario.map(element=>
                                     element.scenarios.map(value=>
                                     <option value={value.id} key={value.id} > {value.name} </option>
                                     )
@@ -26,4 +26,4 @@ class S_Seranio extends Component {
     }
 }
 
-export default S_Seranio
+export default S_Seranio 

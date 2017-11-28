@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function getSerenario(){
+function getScenario(){
   const proxyurl = "https://cors-anywhere.herokuapp.com/";
     return new Promise((resolve,reject)=>{
       axios.get(proxyurl + "http://melatupa.azurewebsites.net/scenarioCollection/4/region/1").
@@ -14,4 +14,4 @@ function getSerenario(){
     })   
 }
 
-export default {getSerenario}
+export default {getScenario}
