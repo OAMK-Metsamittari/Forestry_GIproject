@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { RadioGroup, RadioButton } from 'react-radio-buttons';
 const ReactHighcharts = require('react-highcharts');
 
 
@@ -47,6 +48,20 @@ class Graph extends Component {
       <div className="row sidespace">
         <div className="col-md-12 well well-sm bggraph">
            <ReactHighcharts config = {config}></ReactHighcharts>
+           <RadioGroup onChange={ this.onChange } horizontal>
+      <RadioButton value="placeholder">
+      placeholder
+      </RadioButton>
+      <RadioButton value="placeholder">
+      placeholder
+      </RadioButton>
+      <RadioButton value="placeholder">
+      placeholder
+      </RadioButton>
+      <RadioButton value="placeholder">
+      placeholder
+      </RadioButton>
+    </RadioGroup>
         </div>        
       </div>
     </div>
