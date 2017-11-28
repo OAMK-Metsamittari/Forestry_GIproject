@@ -72,12 +72,9 @@ class App extends Component {
                                  selectedRegionLevelId={this.selectedRegionLevelId}
                   />                
                   <S_Region region={this.state.region}/>
-                  <S_SeranioCollection />               
+                  <S_SeranioCollection SeranioCollection={this.state.region}/>               
                   <S_Seranio scenario = {this.state.scenario}/>
-                  <S_Years year = {this.state.year} /> 
-                               
-                  
-                    
+                  <S_Years year = {this.state.year} />                
             </div>         
           </div>       
           <div className="col-md-6">

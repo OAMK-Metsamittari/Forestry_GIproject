@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-
-
 class S_RegionLevel extends Component { 
 
     constructor(props){
