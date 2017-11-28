@@ -4,8 +4,8 @@ import { RadioGroup, RadioButton } from 'react-radio-buttons';
 const ReactHighcharts = require('react-highcharts');
 
 
-
 class Graph extends Component {
+
   render() {
     const config = {      
           chart: {
@@ -36,11 +36,12 @@ class Graph extends Component {
           },
       
           series: [{
-              data: [1, 3, 2, 4]
+              data: [1, 3, 2, 4, 5]
           }, {
               data: [324, 124, 547, 221],
               yAxis: 1
           }]
+          
       
       }
     return (
@@ -49,16 +50,16 @@ class Graph extends Component {
         <div className="col-md-12 well well-sm bggraph">
            <ReactHighcharts config = {config}></ReactHighcharts>
            <RadioGroup onChange={ this.onChange } horizontal>
-      <RadioButton value="placeholder">
+      <RadioButton value="singlescenario">
       placeholder
       </RadioButton>
-      <RadioButton value="placeholder">
+      <RadioButton value="manyscenariossep">
       placeholder
       </RadioButton>
-      <RadioButton value="placeholder">
+      <RadioButton value="manyscenarioschart">
       placeholder
       </RadioButton>
-      <RadioButton value="placeholder">
+      <RadioButton value="manyscenariosbar">
       placeholder
       </RadioButton>
     </RadioGroup>
