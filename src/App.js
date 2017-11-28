@@ -14,20 +14,41 @@ import I_CollectProduct from './components/I_CollectProduct';
 import I_Diversity from './components/I_Diversity';
 import I_Carbon from './components/I_carbon';
 import I_OtherIndicator from './components/I_OtherIndicator';
+import seranioData from './Data/serenario';
+import regionData from './Data/region';
+import regionLevelData from './Data/regionLevel';
 
 class App extends Component {
   constructor(props){
     super(props); 
     this.state = {
-      selectedRegion:[]
+      selectedRegion:[],
+      seranio:[],
+      region:[],
+      regionLevel:[]
+
     }
-    this.selectHandler = this.selectHandler.bind(this);  
+    
   } 
 
-  selectHandler = (value) => {
-    console.log(value);
-    this.setState({selectedRegion:value})
+  componentDidMount(){
+
+    regionData.getRegion().then(result=>{                  
+      this.setState({region:result.data})        
+   })  
+
+    seranioData.getSerenario().then(result=>{           
+      this.setState({seranio:result.data})            
+    })  
+    
+    regionLevelData.getRegionLevel().then(result=>{           
+      this.setState({regionLevel:result.data})          
+    })     
+    
   }
+
+
+  
   render() {
     return (
      <div>        
@@ -39,10 +60,10 @@ class App extends Component {
         <div className="row">       
           <div className="col-md-3 well well-sm indicator" >  
             <div className="col-md-12">                  
-                  <S_RegionLevel selectHandler={this.selectHandler}/>                
-                  <S_Region selectedRegion={this.state.selectedRegion}/>
+                  <S_RegionLevel regionLevel={this.state.regionLevel}/>                
+                  <S_Region region={this.state.region}/>
                   <S_SeranioCollection />               
-                  <S_Seranio />
+                  <S_Seranio seranio = {this.state.seranio}/>
                   <S_Years />    
             </div>         
           </div>       
