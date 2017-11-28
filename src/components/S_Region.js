@@ -10,7 +10,7 @@ class S_Region extends Component {
                 <div className="col-md-12">                    
                     <div className="form-group">
                     <label className="textfont">Region</label>                    
-                        <select className="form-control" multiple="multiple">
+                        <select className="form-control">
                         {
                             region.map(element=>
                             <option value={element.id} key={element.id}>{element.name}</option>) 

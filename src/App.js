@@ -25,10 +25,11 @@ class App extends Component {
       selectedRegion:[],
       seranio:[],
       region:[],
-      regionLevel:[]
-
+      regionLevel:[],
+     
     }
-    
+
+  this.selectedRegionLevelId =  this.selectedRegionLevelId.bind(this);    
   } 
 
   componentDidMount(){
@@ -47,7 +48,11 @@ class App extends Component {
     
   }
 
-
+  selectedRegionLevelId(regionId){ 
+      regionData.getRegion(regionId).then(result=>{                  
+        this.setState({region:result.data})        
+    })
+  }
   
   render() {
     return (
@@ -60,7 +65,9 @@ class App extends Component {
         <div className="row">       
           <div className="col-md-3 well well-sm indicator" >  
             <div className="col-md-12">                  
-                  <S_RegionLevel regionLevel={this.state.regionLevel}/>                
+                  <S_RegionLevel regionLevel={this.state.regionLevel}
+                                 selectedRegionLevelId={this.selectedRegionLevelId}
+                  />                
                   <S_Region region={this.state.region}/>
                   <S_SeranioCollection />               
                   <S_Seranio seranio = {this.state.seranio}/>
