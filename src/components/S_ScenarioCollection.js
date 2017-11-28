@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class S_SeranioCollection extends Component {
+class S_ScenarioCollection extends Component {
     render () {
         return (
             <div>
-                SeranioCollection
+                ScenarioCollection
             </div>
         )
     }
 }
 
-export default S_SeranioCollection
+export default S_ScenarioCollection

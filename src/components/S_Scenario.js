@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-class S_Seranio extends Component {
+class S_Scenario extends Component {
     render () {
         const { seranio} =  this.props;
         return (
@@ -25,4 +25,4 @@ class S_Seranio extends Component {
     }
 }
 
-export default S_Seranio
+export default S_Scenario

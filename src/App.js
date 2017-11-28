@@ -4,8 +4,8 @@ import './assets/Style.css';
 import Header from './components/Header';
 import S_Region from './components/S_Region';
 import S_RegionLevel from './components/S_RegionLevel';
-import S_SeranioCollection from './components/S_SeranioCollection';
-import S_Seranio from './components/S_Seranio';
+import S_ScenarioCollection from './components/S_ScenarioCollection';
+import S_Scenario from './components/S_Scenario';
 import S_Years from './components/S_Years';
 import Graph  from './components/Graph';
 import I_Indicator from  './components/I_Indicator';
@@ -14,7 +14,7 @@ import I_CollectProduct from './components/I_CollectProduct';
 import I_Diversity from './components/I_Diversity';
 import I_Carbon from './components/I_carbon';
 import I_OtherIndicator from './components/I_OtherIndicator';
-import seranioData from './Data/serenario';
+import scenarioData from './Data/scenario.js';
 import regionData from './Data/region';
 import regionLevelData from './Data/regionLevel';
 
@@ -23,7 +23,7 @@ class App extends Component {
     super(props); 
     this.state = {
       selectedRegion:[],
-      seranio:[],
+      scenario:[],
       region:[],
       regionLevel:[]
 
@@ -37,8 +37,8 @@ class App extends Component {
       this.setState({region:result.data})        
    })  
 
-    seranioData.getSerenario().then(result=>{           
-      this.setState({seranio:result.data})            
+    scenarioData.getScenario().then(result=>{           
+      this.setState({scenario:result.data})            
     })  
     
     regionLevelData.getRegionLevel().then(result=>{           
@@ -62,8 +62,8 @@ class App extends Component {
             <div className="col-md-12">                  
                   <S_RegionLevel regionLevel={this.state.regionLevel}/>                
                   <S_Region region={this.state.region}/>
-                  <S_SeranioCollection />               
-                  <S_Seranio seranio = {this.state.seranio}/>
+                  <S_ScenarioCollection />               
+                  <S_Scenario seranio = {this.state.scenario}/>
                   <S_Years />    
             </div>         
           </div>       
