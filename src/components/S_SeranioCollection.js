@@ -4,7 +4,7 @@ class S_SeranioCollection extends Component {
     render () {
         return (
             <div>
-                SeranioCollection
+                Seranio collection
             </div>
         )
     }

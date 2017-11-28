@@ -9,6 +9,7 @@ class S_Seranio extends Component {
             <div className="row">
                 <div className="col-md-12" >
                      <div className="form-group">
+                     <label className="textfont">scenarios</label> 
                         <select className="form-control"  multiple={true}>
                             {            
                             seranio.map(element=>

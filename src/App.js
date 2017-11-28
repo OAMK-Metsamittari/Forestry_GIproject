@@ -17,7 +17,7 @@ import I_OtherIndicator from './components/I_OtherIndicator';
 import seranioData from './Data/serenario';
 import regionData from './Data/region';
 import regionLevelData from './Data/regionLevel';
-
+import yearData from './Data/year';
 class App extends Component {
   constructor(props){
     super(props); 
@@ -25,7 +25,8 @@ class App extends Component {
       selectedRegion:[],
       seranio:[],
       region:[],
-      regionLevel:[]
+      regionLevel:[],
+      year:[]
 
     }
     
@@ -43,6 +44,9 @@ class App extends Component {
     
     regionLevelData.getRegionLevel().then(result=>{           
       this.setState({regionLevel:result.data})          
+    })  
+    yearData.getYear().then(result=>{           
+      this.setState({year:result.data})          
     })     
     
   }
@@ -64,7 +68,7 @@ class App extends Component {
                   <S_Region region={this.state.region}/>
                   <S_SeranioCollection />               
                   <S_Seranio seranio = {this.state.seranio}/>
-                  <S_Years />    
+                  <S_Years year = {this.state.year} />    
             </div>         
           </div>       
           <div className="col-md-6">
