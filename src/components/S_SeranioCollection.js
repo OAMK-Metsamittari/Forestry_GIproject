@@ -39,8 +39,7 @@ class S_SeranioCollection extends Component {
                          <select className="form-control"   onChange={this.selectSeranioHandler} > 
                             {
                                sceneriosCollect.map(element=>
-                                <option value={element.id} key={element.id}>{element.name}</option>
-                                                            
+                                <option value={element.id} key={element.id}>{element.name}</option>                                                            
                             ) 
                             }                       
                         </select>

@@ -57,6 +57,7 @@ class App extends Component {
       regionData.getRegion(regionId).then(result=>{                  
         this.setState({region:result.data})        
     })
+    this.setState({updateSCollectionById:''})
   }
 
   selectedRegionId(regionId){ 
