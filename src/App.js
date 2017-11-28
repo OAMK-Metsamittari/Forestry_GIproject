@@ -26,10 +26,12 @@ class App extends Component {
       scenario:[],
       region:[],
       regionLevel:[],
-      year:[]
+      year:[],
+      updateSCollectionById:''
     }
 
   this.selectedRegionLevelId =  this.selectedRegionLevelId.bind(this);    
+  this.selectedRegionId = this.selectedRegionId.bind(this);
   } 
 
   componentDidMount(){
@@ -56,6 +58,10 @@ class App extends Component {
         this.setState({region:result.data})        
     })
   }
+
+  selectedRegionId(regionId){ 
+    this.setState({updateSCollectionById:regionId})
+}
   
   render() {
     return (
@@ -71,8 +77,12 @@ class App extends Component {
                   <S_RegionLevel regionLevel={this.state.regionLevel}
                                  selectedRegionLevelId={this.selectedRegionLevelId}
                   />                
-                  <S_Region region={this.state.region}/>
-                  <S_SeranioCollection SeranioCollection={this.state.region}/>               
+                  <S_Region region={this.state.region}
+                            selectedRegionId={this.selectedRegionId}                  
+                  />
+                  <S_SeranioCollection SeranioCollection={this.state.region}
+                                       updateSCollectionById={this.state.updateSCollectionById}
+                  />               
                   <S_Seranio scenario = {this.state.scenario}/>
                   <S_Years year = {this.state.year} />                
             </div>         
