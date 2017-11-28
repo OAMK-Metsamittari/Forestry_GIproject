@@ -8,9 +8,9 @@ import Graph  from './Graph/Graph';
 class Main extends Component {
   render() {
     return (
+
       <div className="row">
-        <div className="col-md-3" >right part  <SelectSeranio /></div>
-       
+        <div className="col-md-3" > <SelectSeranio /></div>
         <div className="col-md-6"><Graph/></div>
         <div className="col-md-3">
            <CombineIndicator />

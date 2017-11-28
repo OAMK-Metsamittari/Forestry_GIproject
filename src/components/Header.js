@@ -4,7 +4,7 @@ class Header extends Component {
     render () {
         return (
             <div className="row">
-                header
+                <h1>Page Heading</h1>
             </div>
         )
     }
