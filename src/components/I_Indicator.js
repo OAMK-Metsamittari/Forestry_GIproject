@@ -8,7 +8,7 @@ class I_Indicator extends Component {
     return (
       <div className="row">
         <div className="col-md-12">
-          <h2 className="headIndicator">Selection of Indicator</h2>
+          <h2 className="headIndicator">Select Indicators</h2>
         </div>        
       </div>
     );
