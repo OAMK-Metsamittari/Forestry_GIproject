@@ -3,7 +3,7 @@ import axios from 'axios';
 function getRegion(rId){
   const regionId = rId || 1;
     return new Promise((resolve,reject)=>{
-      axios.get("http://melatupa.azurewebsites.net/regionLevels/"+regionId+"/regions").
+      axios.get("https://cors-anywhere.herokuapp.com/"+"http://melatupa.azurewebsites.net/regionLevels/"+regionId+"/regions").
       then(result=>{        
         resolve(result);        
       })
