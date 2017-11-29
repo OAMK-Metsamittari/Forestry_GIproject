@@ -69,10 +69,11 @@ class App extends Component {
     this.setState({updateSCollectionById:regionId})
   }
 
-  seranioRegionId(sId,rId){
-    console.log(sId +"re"+ rId);
+  seranioRegionId(sId,rId){    
     scenarioData.getScenario(sId,rId).then(result=>{                  
-      this.setState({scenario:result.data})         
+      this.setState({scenario:result.data}) 
+      this.setState({year:result.data})  
+      console.log(result.data);      
     })
   }
   
@@ -98,7 +99,7 @@ class App extends Component {
                                        seranioRegionId={this.seranioRegionId}
                   />               
                   <S_Seranio scenario = {this.state.scenario}/>
-                  <S_Years year = {this.state.year} />                
+                  <S_Years year={this.state.year} />                
             </div>         
           </div>       
           <div className="col-md-6">
