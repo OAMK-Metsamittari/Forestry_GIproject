@@ -95,7 +95,7 @@ class Graph extends Component {
     const Url = "http://melatupa.azurewebsites.net";    
     axios.get( 'https://cors-anywhere.herokuapp.com/' + Url + '/regionLevels')
         .then(function (response) {
-            console.log(response);
+            console.log("inside graph");
         })
         .catch(function (error) {
            console.log(error);

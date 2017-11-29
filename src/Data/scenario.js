@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-function getScenario(){
+function getScenario(sId,rId){  
+    const scenarioCollectionId = sId || 6;
+    const regionId = rId || 24;
     return new Promise((resolve,reject)=>{
-      axios.get("http://melatupa.azurewebsites.net/scenarioCollection/4/region/1").
+      axios.get("https://cors-anywhere.herokuapp.com/"+"http://melatupa.azurewebsites.net/scenarioCollection/"+scenarioCollectionId +"/region/"+regionId).
       then(result=>{        
         resolve(result);
       })

@@ -18,6 +18,10 @@ import scenarioData from './Data/scenario.js';
 import regionData from './Data/region';
 import regionLevelData from './Data/regionLevel';
 import yearData from './Data/year';
+
+
+
+
 class App extends Component {
   constructor(props){
     super(props); 
@@ -32,6 +36,7 @@ class App extends Component {
 
   this.selectedRegionLevelId =  this.selectedRegionLevelId.bind(this);    
   this.selectedRegionId = this.selectedRegionId.bind(this);
+  this.seranioRegionId = this.seranioRegionId.bind(this);
   } 
 
   componentDidMount(){
@@ -62,7 +67,14 @@ class App extends Component {
 
   selectedRegionId(regionId){ 
     this.setState({updateSCollectionById:regionId})
-}
+  }
+
+  seranioRegionId(sId,rId){
+    console.log(sId +"re"+ rId);
+    scenarioData.getScenario(sId,rId).then(result=>{                  
+      this.setState({scenario:result.data})         
+    })
+  }
   
   render() {
     return (
@@ -83,6 +95,7 @@ class App extends Component {
                   />
                   <S_SeranioCollection SeranioCollection={this.state.region}
                                        updateSCollectionById={this.state.updateSCollectionById}
+                                       seranioRegionId={this.seranioRegionId}
                   />               
                   <S_Seranio scenario = {this.state.scenario}/>
                   <S_Years year = {this.state.year} />                
