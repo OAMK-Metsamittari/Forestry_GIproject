@@ -16,8 +16,9 @@
 .headIndicator{
     background-color:#00af66;
     color:white;
-    border-radius:2px;
-    padding:7px;    
+    border-radius: 25px;
+    padding:7px;
+    text-align: center;
 }
 
 .whole{
