@@ -9,11 +9,6 @@ import S_Seranio  from './components/S_Seranio ';
 import S_Years from './components/S_Years';
 import Graph  from './components/Graph';
 import I_Indicator from  './components/I_Indicator';
-import I_Timber from './components/I_Timber';
-import I_CollectProduct from './components/I_CollectProduct';
-import I_Diversity from './components/I_Diversity';
-import I_Carbon from './components/I_carbon';
-import I_OtherIndicator from './components/I_OtherIndicator';
 import scenarioData from './Data/scenario.js';
 import regionData from './Data/region';
 import regionLevelData from './Data/regionLevel';
@@ -31,6 +26,7 @@ class App extends Component {
       region:[],
       regionLevel:[],
       year:[],
+      indicator:[],
       updateSCollectionById:''
     }
 
@@ -42,11 +38,12 @@ class App extends Component {
   componentDidMount(){
 
     regionData.getRegion().then(result=>{                  
-      this.setState({region:result.data})        
+      this.setState({region:result.data})    
    })  
 
     scenarioData.getScenario().then(result=>{           
-      this.setState({scenario:result.data})            
+      this.setState({scenario:result.data})
+      this.setState({indicator:result.data})                     
     })  
     
     regionLevelData.getRegionLevel().then(result=>{           
@@ -72,8 +69,8 @@ class App extends Component {
   seranioRegionId(sId,rId){    
     scenarioData.getScenario(sId,rId).then(result=>{                  
       this.setState({scenario:result.data}) 
-      this.setState({year:result.data})  
-      console.log(result.data);      
+      this.setState({year:result.data})
+      this.setState({indicator:result.data})          
     })
   }
   
@@ -107,12 +104,7 @@ class App extends Component {
           </div>
           <div className="col-md-3 well well-sm indicator">
             <div className="col-md-12">  
-              <I_Indicator />
-              <I_Timber />
-              <I_CollectProduct />
-              <I_Diversity />
-              <I_Carbon />
-              <I_OtherIndicator />
+              <I_Indicator indicator={this.state.indicator} />             
             </div>
           </div>       
         </div>
