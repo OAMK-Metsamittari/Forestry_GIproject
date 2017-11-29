@@ -14,7 +14,8 @@
 }
 
 .headIndicator{
-    background-color:#00af66;
+    /*background-color:#00af66;*/
+    background: linear-gradient(to bottom, #00af66 20%, #00683B 100%);
     color:white;
     border-radius: 25px;
     padding:7px;
@@ -29,7 +30,7 @@
 
 /*header begin*/
 .navbar-custom {
-    background: #00af66;
+    background: linear-gradient(to bottom, #00af66 20%, #00683B 100%);
     color:#ffffff;
     border-radius:0;     
 }
@@ -79,7 +80,7 @@
 .graphRepresent{
     
     width:100%;
-    background-color:#00af66;
+    background: linear-gradient(to bottom, #00af66 20%, #00683B 100%);
     margin:10px;
     color:white;
 }
