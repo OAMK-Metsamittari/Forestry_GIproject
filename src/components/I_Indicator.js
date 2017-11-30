@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import '../assets/Style.css';
 import _ from 'lodash';
 
 
 class I_Indicator extends Component {
 
-  render() {
+  constructor(props){
+    super(props);
+  }
 
-    const {indicator} = this.props;    
-   
+  selectHandler(event){
+    var selectedValue =event.target.value;
+    console.log(selectedValue);
+    var selectedLength = selectedValue.length;
+  }
+
+  render() {
+    const {indicator} = this.props;  
         return(
           <div className="row">
               <div className="col-md-12">
@@ -22,8 +29,7 @@ class I_Indicator extends Component {
           </div>
         );
 
-  }
- 
+  } 
       renderIndicatorCatagory() {
        // console.log(this.props);
         return _.map(this.props.indicator, element =>
@@ -33,7 +39,7 @@ class I_Indicator extends Component {
                 return (
                   <div  className="list" key={category.name}>
                       <h4>{category.name}</h4>
-                      <select className="form-control" multiple={true}>
+                      <select className="form-control" multiple={true} >
                         {this.renderIndicators(category)}
                       </select>
                   </div>
