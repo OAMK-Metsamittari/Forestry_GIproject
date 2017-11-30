@@ -8,16 +8,15 @@ class S_Years extends Component {
                 <div className="col-md-12" >
                      <div className="list-group">
                      <label className="textfont">Time Period</label> 
-                        <ul className="list-group"  multiple={true}>
-
+                        <select className="form-control" >
                             {            
                             year.map(element=>
                                     element.timePeriods.map(value=>
-                                    <li className="list-group-item" value={value.id} key={value.id} > {value.yearStart}-{value.yearEnd} </li>
+                                    <option value={value.id} key={value.id} > {value.yearStart}-{value.yearEnd} </option>
                                     )
                                 )
                             }
-                        </ul>               
+                        </select>               
                      </div>
                 </div>
             </div>
