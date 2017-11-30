@@ -33,6 +33,7 @@ class App extends Component {
   this.selectedRegionLevelId =  this.selectedRegionLevelId.bind(this);    
   this.selectedRegionId = this.selectedRegionId.bind(this);
   this.seranioRegionId = this.seranioRegionId.bind(this);
+ // this.renderIndicatorCatagory = this.renderIndicatorCatagory.bind(this);
   } 
 
   componentDidMount(){
@@ -104,7 +105,9 @@ class App extends Component {
           </div>
           <div className="col-md-3 well well-sm indicator">
             <div className="col-md-12">  
-              <I_Indicator indicator={this.state.indicator} />             
+              <I_Indicator indicator={this.state.indicator}
+                     // renderIndicatorCatagory={this.renderIndicatorCatagory} 
+                     />             
             </div>
           </div>       
         </div>
