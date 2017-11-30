@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 import Highcharts from 'highcharts';
-import 'highcharts-more';
+import HighchartsMore from 'highcharts/js/highcharts-more.js'
 import axios from 'axios';
 import ReactTable from 'reacttable';
 import '../assets/Style.css';
+HighchartsMore(Highcharts)
 
 
 class Graph extends Component {
@@ -114,7 +115,7 @@ class Graph extends Component {
         Highcharts.chart('chart', {
             
                 chart: {
-                    polar: false
+                    polar: true
                 },
             
                 title: {
@@ -157,10 +158,6 @@ class Graph extends Component {
                     name: 'Column',
                     data: [8, 7, 6, 5, 4, 3, 2, 1],
                     pointPlacement: 'between'
-                }, {
-                    type: 'line',
-                    name: 'Line',
-                    data: [1, 2, 3, 4, 5, 6, 7, 8]
                 }, {
                     type: 'area',
                     name: 'Area',
