@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { RadioGroup, RadioButton } from 'react-radio-buttons';
 import Highcharts from 'highcharts';
+import HighchartsMore from 'highcharts/js/highcharts-more.js'
 import axios from 'axios';
 import ReactTable from 'reacttable';
 import '../assets/Style.css';
+HighchartsMore(Highcharts)
 
 
 class Graph extends Component {
-    chart3= () => {
+    barchart= () => {
         Highcharts.chart('chart', {
             chart: {
-                type: 'column'
+                type: 'bar',
             },
         
             title: {
@@ -43,51 +45,125 @@ class Graph extends Component {
         });
     }
 
-    chart2 = () =>{
+    manypolars = () =>{
         Highcharts.chart('chart', {
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
+            
             title: {
-                text: 'Browser market shares. January, 2015 to May, 2015'
+                text: 'Combination chart'
             },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            xAxis: {
+                categories: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
             },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                        style: {
-                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                        },
-                        connectorColor: 'silver'
+            labels: {
+                items: [{
+                    html: 'Total fruit consumption',
+                    style: {
+                        left: '50px',
+                        top: '18px',
+                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
                     }
-                }
+                }]
             },
             series: [{
-                name: 'Brands',
-                data: [
-                    { name: 'IE', y: 56.33 },
-                    {
-                        name: 'Chrome',
-                        y: 24.03,
-                        sliced: true,
-                        selected: true
-                    },
-                    { name: 'Firefox', y: 10.38 },
-                    { name: 'Safari', y: 4.77 },
-                    { name: 'Opera', y: 0.91 },
-                    { name: 'Other', y: 0.2 }
-                ]
+                type: 'column',
+                name: 'Jane',
+                data: [3, 2, 1, 3, 4]
+            }, {
+                type: 'column',
+                name: 'John',
+                data: [2, 3, 5, 7, 6]
+            }, {
+                type: 'column',
+                name: 'Joe',
+                data: [4, 3, 3, 9, 0]
+            }, {
+                type: 'spline',
+                name: 'Average',
+                data: [3, 2.67, 3, 6.33, 3.33],
+                marker: {
+                    lineWidth: 2,
+                    lineColor: Highcharts.getOptions().colors[3],
+                    fillColor: 'white'
+                }
+            }, {
+                type: 'pie',
+                name: 'Total consumption',
+                data: [{
+                    name: 'Jane',
+                    y: 13,
+                    color: Highcharts.getOptions().colors[0] // Jane's color
+                }, {
+                    name: 'John',
+                    y: 23,
+                    color: Highcharts.getOptions().colors[1] // John's color
+                }, {
+                    name: 'Joe',
+                    y: 19,
+                    color: Highcharts.getOptions().colors[2] // Joe's color
+                }],
+                center: [100, 80],
+                size: 100,
+                showInLegend: false,
+                dataLabels: {
+                    enabled: false
+                }
             }]
         });
+    }
+
+    singlepolar = () =>{
+        Highcharts.chart('chart', {
+            
+                chart: {
+                    polar: true
+                },
+            
+                title: {
+                    text: 'Highcharts Polar Chart'
+                },
+            
+                pane: {
+                    startAngle: 0,
+                    endAngle: 360
+                },
+            
+                xAxis: {
+                    tickInterval: 45,
+                    min: 0,
+                    max: 360,
+                    labels: {
+                        formatter: function () {
+                            return this.value + '°';
+                        }
+                    }
+                },
+            
+                yAxis: {
+                    min: 0
+                },
+            
+                plotOptions: {
+                    series: {
+                        pointStart: 0,
+                        pointInterval: 45
+                    },
+                    column: {
+                        pointPadding: 0,
+                        groupPadding: 0
+                    }
+                },
+            
+                series: [{
+                    type: 'column',
+                    name: 'Column',
+                    data: [8, 7, 6, 5, 4, 3, 2, 1],
+                    pointPlacement: 'between'
+                }, {
+                    type: 'area',
+                    name: 'Area',
+                    data: [1, 8, 2, 7, 3, 6, 4, 5]
+                }]
+            });
     }
 
 
@@ -108,7 +184,6 @@ class Graph extends Component {
             <div className="row">
                 <div id="chart" className="col-md-12" > 
                     <figure>
-
                     </figure>
                 </div>
              </div>
@@ -117,13 +192,13 @@ class Graph extends Component {
                 <div className="row sidespace">
                     <div className="col-md-12"> 
                         <div className="graphRepresent">                       
-                            <RadioButton value="singlescenario"  onChange={this.chart2}>
-                                <p className="graphName">Polar column chart(combine)</p>
+                            <RadioButton value="singlescenario"  onChange={this.singlepolar}>
+                                <p className="graphName">Polar column chart(single)</p>
                             </RadioButton>
                         </div>
                         <div className="graphRepresent"> 
-                            <RadioButton value="manyscenariossep" onChange={this.chart2}>
-                                <p className="graphName"> Polar column chart(separate)</p>
+                            <RadioButton value="manyscenariossep" onChange={this.manypolars}>
+                                <p className="graphName"> Polar column chart(many)</p>
                             </RadioButton>
                          </div>
                     </div>
@@ -131,7 +206,7 @@ class Graph extends Component {
                 <div className="row sidespace">
                     <div className="col-md-12">
                         <div className="graphRepresent">
-                            <RadioButton value="manyscenarioschart" onChange={this.chart3}>
+                            <RadioButton value="manyscenarioschart" onChange={this.barchart}>
                                 <p className="graphName"> Bar chart</p>
                             </RadioButton>
                         </div>
