@@ -37,7 +37,7 @@ class I_Indicator extends Component {
   
     this.setState({totalSelectedIndicator:final},function(){     
       if(this.state.totalSelectedIndicator.length*selectedNumberOfSeranio>20){
-        alert("Minimum choice is" + 20/selectedNumberOfSeranio);
+        alert("Maximum Choice Of Indicator is" +" " +  Math.floor(20/selectedNumberOfSeranio));
       }
     }); 
           
@@ -64,8 +64,7 @@ class I_Indicator extends Component {
                 return (
                   <div  className="list" key={category.name}>
                       <h4>{category.name}</h4>
-                      <select className="form-control" multiple={true} onChange={this.selectHandler}>
-                         <option></option>
+                      <select className="form-control" multiple={true} onChange={this.selectHandler}>                        
                         {this.renderIndicators(category)}
                       </select>
                   </div>
