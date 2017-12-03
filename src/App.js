@@ -27,13 +27,15 @@ class App extends Component {
       regionLevel:[],
       year:[],
       indicator:[],
-      updateSCollectionById:''
+      updateSCollectionById:'',
+      seranioNumber:0
+      
     }
 
   this.selectedRegionLevelId =  this.selectedRegionLevelId.bind(this);    
   this.selectedRegionId = this.selectedRegionId.bind(this);
   this.seranioRegionId = this.seranioRegionId.bind(this);
- // this.renderIndicatorCatagory = this.renderIndicatorCatagory.bind(this);
+  this.selectedSeranioNumber = this.selectedSeranioNumber.bind(this);
   } 
 
   componentDidMount(){
@@ -74,6 +76,10 @@ class App extends Component {
       this.setState({indicator:result.data})          
     })
   }
+
+  selectedSeranioNumber(number){  
+    this.setState({seranioNumber:number});   
+  }
   
   render() {
     return (
@@ -96,7 +102,9 @@ class App extends Component {
                                        updateSCollectionById={this.state.updateSCollectionById}
                                        seranioRegionId={this.seranioRegionId}
                   />               
-                  <S_Seranio scenario = {this.state.scenario}/>
+                  <S_Seranio scenario = {this.state.scenario}
+                             selectedSeranioNumber = {this.selectedSeranioNumber}
+                  />
                   <S_Years year={this.state.year} />                
             </div>         
           </div>       
@@ -105,9 +113,9 @@ class App extends Component {
           </div>
           <div className="col-md-3 well well-sm indicator">
             <div className="col-md-12">  
-              <I_Indicator indicator={this.state.indicator}
-                     // renderIndicatorCatagory={this.renderIndicatorCatagory} 
-                     />             
+              <I_Indicator indicator={this.state.indicator} 
+                           seranioNumber={this.state.seranioNumber}                    
+               />             
             </div>
           </div>       
         </div>
