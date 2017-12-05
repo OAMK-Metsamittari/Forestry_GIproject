@@ -9,7 +9,8 @@ class I_Indicator extends Component {
   constructor(props){
     super(props);
     this.state = {
-      totalSelectedIndicator:[]
+      totalSelectedIndicator:[],
+      totalSelectedIndicatorName:[]
     }
     this.selectHandler = this.selectHandler.bind(this);
   }
@@ -17,27 +18,37 @@ class I_Indicator extends Component {
   selectHandler(event){    
     let result = []; 
     let final = [];
+    let indicatorName = [];
+    let finalName = [];
     const selectedNumberOfSeranio = this.props.seranioNumber;
     
     let iLen = event.target.options.length;
     for (var count=0; count<iLen; count++) {
-        var opt = event.target.options[count]; 
-        console.log(this.state.totalSelectedIndicator.includes(opt.value));
-        if(this.state.totalSelectedIndicator.includes(opt.value)){
+        var opt = event.target.options[count];        
+        if(this.state.totalSelectedIndicator.includes(opt.value)|| this.state.totalSelectedIndicatorName.includes(opt.text)){
           let index = this.state.totalSelectedIndicator.indexOf(opt.value)
-          this.state.totalSelectedIndicator.splice(index, 1);          
+          this.state.totalSelectedIndicator.splice(index, 1);
+          let valueIndex =   this.state.totalSelectedIndicatorName.indexOf(opt.text);
+          console.log(valueIndex); 
+          this.state.totalSelectedIndicatorName.splice(valueIndex,1);         
         }       
         if (opt.selected) {
           result.push(opt.value || opt.text);
+          indicatorName.push(opt.text);
         }
       }  
       
     final = this.state.totalSelectedIndicator.concat(result);
+    finalName = this.state.totalSelectedIndicatorName.concat(indicatorName);
    
-  
+   
+    this.setState({totalSelectedIndicatorName:finalName});
     this.setState({totalSelectedIndicator:final},function(){     
       if(this.state.totalSelectedIndicator.length*selectedNumberOfSeranio>20){
         alert("Maximum Choice Of Indicator is" +" " +  Math.floor(20/selectedNumberOfSeranio));
+      }else{
+        let indicatorName = (this.state.totalSelectedIndicatorName);
+        this.props.selectedIndicator(final,indicatorName);       
       }
     }); 
           
@@ -64,8 +75,10 @@ class I_Indicator extends Component {
                 return (
                   <div  className="list" key={category.name}>
                       <h4>{category.name}</h4>
-                      <select className="form-control" multiple={true} onChange={this.selectHandler}>                        
+                      <select className="form-control" multiple={true} onChange={this.selectHandler}>
+                        <option></option>                        
                         {this.renderIndicators(category)}
+                       
                       </select>
                   </div>
                 );

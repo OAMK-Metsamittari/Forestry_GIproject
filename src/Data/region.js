@@ -14,4 +14,6 @@ function getRegion(rId){
     })   
 }
 
+
+
 export default {getRegion}

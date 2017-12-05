@@ -10,38 +10,78 @@ HighchartsMore(Highcharts)
 
 
 class Graph extends Component {
+    constructor(props){
+        super(props);      
+    }
+    
     barchart= () => {
+       const finalValue = [];
+       this.props.scenario.forEach(element=>{           
+           const{Indicator} = this.props;          
+           element.values.map(value=>{              
+               let valIndicator = value.indicatorId.toString();
+               let valSeranio = value.scenarioId.toString(); 
+               let valTime = value.timePeriodId.toString();            
+               if((this.props.Indicator.includes(valIndicator))&&(this.props.selectedSeranio.includes(valSeranio))&&(this.props.yearId.includes(valTime))){
+                   finalValue.push(value);
+               }           
+           })         
+         finalValue.sort(function(a, b) { 
+            return a.indicatorId - b.indicatorId;                
+          });             
+       })   
+      
+       let final = [],result =[],scenarioId = [];  
+       finalValue.map((element,index)=>{      
+        final = [];               
+        if((scenarioId.includes(element.scenarioId))!=true){       
+            finalValue.map((checkelement)=>{
+                if(element.scenarioId == checkelement.scenarioId){
+                    final.push(checkelement.value);
+                }                  
+            }) 
+            let seranioName = this.props.SeranioName[index];             
+            result.push({
+                name:seranioName,
+                data:final
+            })
+            scenarioId.push(element.scenarioId);       
+        }     
+       }) 
+       
+
         Highcharts.chart('chart', {
             chart: {
-                type: 'bar',
+                type: 'column'
             },
-        
             title: {
-                text: 'Styling axes and columns'
+                text:this.props.regionName +"(" + this.props.period +")"
+            },            
+            xAxis: {
+                categories:this.props.IndicatorName,
+                crosshair: false
             },
-        
-            yAxis: [{
-                className: 'highcharts-color-0',
+            yAxis: {
+                min: 0,
                 title: {
-                    text: 'Primary axis'
+                    text: ''
                 }
-            }, {
-                className: 'highcharts-color-1',
-                opposite: true,
-                title: {
-                    text: 'Secondary axis'
-                }
-            }],
-        
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                    '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+                footerFormat: '</table>',
+                shared: true,
+                useHTML: true
+            },
             plotOptions: {
                 column: {
-                    borderRadius: 5
+                    pointPadding: 0.2,
+                    borderWidth: 0
                 }
             },
-        
-            series: [{
-                data: [1, 3, 2, 4, 5]
-            }]
+            series:result             
         });
     }
 
@@ -166,22 +206,38 @@ class Graph extends Component {
             });
     }
 
-
-  render() {
-    const Url = "http://melatupa.azurewebsites.net";    
-    axios.get( 'https://cors-anywhere.herokuapp.com/' + Url + '/regionLevels')
-        .then(function (response) {
-            console.log("inside graph");
-        })
-        .catch(function (error) {
-           console.log(error);
-        });
+    table =()=>{
+        Highcharts.chart('chart', {
+            data: {
+                table: 'datatable'
+            },
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Data extracted from a HTML table in the page'
+            },
+            yAxis: {
+                allowDecimals: false,
+                title: {
+                    text: 'Units'
+                }
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+         } );
+    }
+  render() {   
     const divStyle = {
         color: 'blue',
     };  
     return (
         <div className="col-md-12 well well-sm indicator">
-            <div className="row">
+              <div className="row">
                 <div id="chart" className="col-md-12" > 
                     <figure>
                     </figure>
@@ -211,7 +267,7 @@ class Graph extends Component {
                             </RadioButton>
                         </div>
                         <div className="graphRepresent">
-                            <RadioButton value="manyscenariosbar" onChange={this.chart3}>
+                            <RadioButton value="manyscenariosbar" onChange={this.table}>
                                 <p className="graphName"> Table chart</p>
                             </RadioButton> 
                         </div>                         
@@ -220,6 +276,7 @@ class Graph extends Component {
             </RadioGroup> 
             </div>
         </div>
+      
     );
   }
 }

@@ -12,18 +12,20 @@ class S_Seranio  extends Component {
         this.selectHandler = this.selectHandler.bind(this);
     }
     selectHandler(event){ 
-        let result = []; 
+        let result = [];
+        let SeranioName = []; 
         let iLen = event.target.options.length;      
         for (var count=0; count<iLen; count++) {
             var opt = event.target.options[count];        
             if (opt.selected) {
-              result.push(opt.value || opt.text);
+              result.push(opt.value || opt.text);             
+              SeranioName.push(opt.text);
             }
           }      
         if(result.length>20){
             alert("Maximum choice can be 20 ");            
         } else{
-            this.props.selectedSeranioNumber(result.length)
+            this.props.selectedSeranioNumber(result,SeranioName);
         }  
             
       }
@@ -38,7 +40,8 @@ class S_Seranio  extends Component {
                             {            
                             scenario.map(element=>
                                     element.scenarios.map(value=>
-                                    <option value={value.id} key={value.id} > {value.name} </option>
+                                    <option value={value.id} key={value.id} > {value.name}</option>
+                                     
                                     )
                                 )
                             }

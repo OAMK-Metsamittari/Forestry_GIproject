@@ -8,8 +8,10 @@ class S_Region extends Component {
         this.selectHandler = this.selectHandler.bind(this);      
     }
 
-    selectHandler(event){     
-        this.props.selectedRegionId(event.target.value); 
+    selectHandler(event){      
+        let index = event.target.selectedIndex; 
+        let text = event.target.options[index].text;       
+        this.props.selectedRegionId(event.target.value,text);
    }   
     render () { 
         const { region} =  this.props;            
