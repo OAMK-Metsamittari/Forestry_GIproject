@@ -11,44 +11,50 @@ HighchartsMore(Highcharts)
 
 class Graph extends Component {
     constructor(props){
-        super(props);      
+        super(props); 
+        this.getValueForGraph = this.getValueForGraph.bind(this);     
     }
-    
-    barchart= () => {
-       const finalValue = [];
-       this.props.scenario.forEach(element=>{           
-           const{Indicator} = this.props;          
-           element.values.map(value=>{              
-               let valIndicator = value.indicatorId.toString();
-               let valSeranio = value.scenarioId.toString(); 
-               let valTime = value.timePeriodId.toString();            
-               if((this.props.Indicator.includes(valIndicator))&&(this.props.selectedSeranio.includes(valSeranio))&&(this.props.yearId.includes(valTime))){
-                   finalValue.push(value);
-               }           
-           })         
-         finalValue.sort(function(a, b) { 
-            return a.indicatorId - b.indicatorId;                
-          });             
-       })   
-      
-       let final = [],result =[],scenarioId = [];  
-       finalValue.map((element,index)=>{      
-        final = [];               
-        if((scenarioId.includes(element.scenarioId))!=true){       
-            finalValue.map((checkelement)=>{
-                if(element.scenarioId == checkelement.scenarioId){
-                    final.push(checkelement.value);
-                }                  
-            }) 
-            let seranioName = this.props.SeranioName[index];             
-            result.push({
-                name:seranioName,
-                data:final
-            })
-            scenarioId.push(element.scenarioId);       
-        }     
-       }) 
+
+    getValueForGraph(){
+        const finalValue = [];
+        this.props.scenario.forEach(element=>{           
+            const{Indicator} = this.props;          
+            element.values.map(value=>{              
+                let valIndicator = value.indicatorId.toString();
+                let valSeranio = value.scenarioId.toString(); 
+                let valTime = value.timePeriodId.toString();            
+                if((this.props.Indicator.includes(valIndicator))&&(this.props.selectedSeranio.includes(valSeranio))&&(this.props.yearId.includes(valTime))){
+                    finalValue.push(value);
+                }           
+            })         
+          finalValue.sort(function(a, b) { 
+             return a.indicatorId - b.indicatorId;                
+           });             
+        })   
        
+        let final = [],result =[],scenarioId = [];  
+        finalValue.map((element,index)=>{      
+         final = [];               
+         if((scenarioId.includes(element.scenarioId))!=true){       
+             finalValue.map((checkelement)=>{
+                 if(element.scenarioId == checkelement.scenarioId){
+                     final.push(checkelement.value);
+                 }                  
+             }) 
+             let seranioName = this.props.SeranioName[index];             
+             result.push({
+                 name:seranioName,
+                 data:final
+             })
+             scenarioId.push(element.scenarioId);       
+         }     
+        }) 
+
+        return result;
+    }
+
+    barchart= () => {
+      
 
         Highcharts.chart('chart', {
             chart: {
@@ -81,7 +87,7 @@ class Graph extends Component {
                     borderWidth: 0
                 }
             },
-            series:result             
+            series:this.getValueForGraph()             
         });
     }
 
@@ -152,6 +158,8 @@ class Graph extends Component {
     }
 
     singlepolar = () =>{
+
+     
         Highcharts.chart('chart', {
             
                 chart: {
@@ -193,16 +201,7 @@ class Graph extends Component {
                     }
                 },
             
-                series: [{
-                    type: 'column',
-                    name: 'Column',
-                    data: [8, 7, 6, 5, 4, 3, 2, 1],
-                    pointPlacement: 'between'
-                }, {
-                    type: 'area',
-                    name: 'Area',
-                    data: [1, 8, 2, 7, 3, 6, 4, 5]
-                }]
+                series: this.getValueForGraph()
             });
     }
 
