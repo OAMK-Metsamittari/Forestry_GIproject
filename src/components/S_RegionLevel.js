@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { reactTranslateChangeLanguage } from 'translate-components';
+import Translate from 'translate-components';
 
 class S_RegionLevel extends Component { 
 
@@ -15,8 +17,8 @@ class S_RegionLevel extends Component {
         const {regionLevel} =  this.props;      
         return (
             <div className="RegionLevel">  
-                <h2 className="headIndicator">Select Scenarios</h2> 
-                <label className="textfont">Region Level</label>            
+                <h2 className="headIndicator"><Translate>Select Scenarios</Translate></h2> 
+                <label className="textfont"><Translate>Region Level</Translate></label>            
                <div className="form-group">                    
                     <select className="form-control"   onChange={this.selectHandler} >
                         {

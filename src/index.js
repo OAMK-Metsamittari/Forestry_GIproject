@@ -3,6 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+import { TranslateProvider } from 'translate-components';
+import translations from './translations.json';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+    <TranslateProvider translations={translations} defaultLanguage={'en'}>
+       <App />
+    </TranslateProvider>, document.getElementById('root'));
 registerServiceWorker();

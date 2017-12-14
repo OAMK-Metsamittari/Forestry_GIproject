@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Translate from 'translate-components';
+import { reactTranslateChangeLanguage } from 'translate-components';
 
 
 class S_Seranio  extends Component {
@@ -35,7 +37,7 @@ class S_Seranio  extends Component {
             <div className="row">
                 <div className="col-md-12" >
                      <div className="form-group">
-                     <label className="textfont">scenarios</label> 
+                     <label className="textfont"><Translate>scenarios</Translate></label> 
                         <select className="form-control" id="Example" multiple={true} onChange={this.selectHandler}>
                             {            
                             scenario.map(element=>

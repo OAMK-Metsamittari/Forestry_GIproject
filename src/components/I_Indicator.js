@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/Style.css';
 import _ from 'lodash';
+import Translate from 'translate-components';
+import { reactTranslateChangeLanguage } from 'translate-components';
 
 
 class I_Indicator extends Component {
@@ -59,7 +61,7 @@ class I_Indicator extends Component {
         return(
           <div className="row">
               <div className="col-md-12">
-                <h2 className="headIndicator">Select Indicators</h2>
+                <h2 className="headIndicator"><Translate>Select Indicators</Translate></h2>
                 <ul>
                   {this.renderIndicatorCatagory()}
                 </ul>

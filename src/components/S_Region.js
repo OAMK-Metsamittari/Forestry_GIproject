@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';  
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import { reactTranslateChangeLanguage } from 'translate-components';
+import Translate from 'translate-components'; 
 
 class S_Region extends Component {  
     constructor(props){
@@ -19,7 +21,7 @@ class S_Region extends Component {
             <div className="row">
                 <div className="col-md-12">                    
                     <div className="form-group">
-                    <label className="textfont">Region</label>                    
+                    <label className="textfont"><Translate>Region</Translate></label>                    
                         <select className="form-control"   onChange={this.selectHandler} >
                         {
                             region.map(element=>

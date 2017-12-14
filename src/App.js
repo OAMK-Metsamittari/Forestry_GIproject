@@ -13,6 +13,8 @@ import scenarioData from './Data/scenario.js';
 import regionData from './Data/region';
 import regionLevelData from './Data/regionLevel';
 import yearData from './Data/year';
+import Translate from 'translate-components'
+import { reactTranslateChangeLanguage } from 'translate-components'
 
 
 
@@ -35,25 +37,26 @@ class App extends Component {
       seranioNumber:0,
       regionName:'',
       period:'' ,
-      periodId:''   
+      periodId:'',             
     }
+    
 
   this.selectedRegionLevelId =  this.selectedRegionLevelId.bind(this);    
   this.selectedRegionId = this.selectedRegionId.bind(this);
   this.seranioRegionId = this.seranioRegionId.bind(this);
   this.selectedSeranioNumber = this.selectedSeranioNumber.bind(this);
   this.selectedYear = this.selectedYear.bind(this);
-  this.selectedIndicator = this.selectedIndicator.bind(this);
+  this.selectedIndicator = this.selectedIndicator.bind(this);  
   } 
 
-  componentDidMount(){
-
+  componentDidMount(){   
+    
     regionData.getRegion().then(result=>{                  
       this.setState({region:result.data})       
       this.setState({regionName:result.data[0].name});   
    })  
 
-    scenarioData.getScenario().then(result=>{           
+    scenarioData.getScenario().then(result=>{                
       this.setState({scenario:result.data})
       this.setState({indicator:result.data})                     
     })  
@@ -109,14 +112,15 @@ class App extends Component {
     this.setState({selectedIndicator:indicator});
     this.setState({selectedIndicatorName:indicatorName});    
   }
+ 
   
-  render() {
+  render() {    
     return (
-     <div>        
+     <div className="App">                 
         <div className="row">      
         <div className="col-md-12" >
-          <Header />
-        </div>      
+          <Header />          
+        </div>             
         </div>
         <div className="row">       
           <div className="col-md-3 well well-sm indicator" >  
@@ -148,8 +152,7 @@ class App extends Component {
              Indicator={this.state.selectedIndicator}
              IndicatorName = {this.state.selectedIndicatorName}
              scenario = {this.state.scenario}
-             yearId = {this.state.periodId}
-            
+             yearId = {this.state.periodId}            
             />
           </div>
           <div className="col-md-3 well well-sm indicator">

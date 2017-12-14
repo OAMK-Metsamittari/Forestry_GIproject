@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { reactTranslateChangeLanguage } from 'translate-components';
+import Translate from 'translate-components'; 
 
 class S_Years extends Component {
     constructor(props){
@@ -18,7 +20,7 @@ class S_Years extends Component {
             <div className="row">
                 <div className="col-md-12" >
                      <div className="list-group">
-                     <label className="textfont">Time Period</label> 
+                     <label className="textfont"><Translate>Time Period</Translate></label> 
                         <select className="form-control"  onChange={this.selectHandler} >
                           <option>select the year</option>
                             {            

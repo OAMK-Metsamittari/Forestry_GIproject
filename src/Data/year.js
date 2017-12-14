@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Translate from 'translate-components';
+import { reactTranslateChangeLanguage } from 'translate-components';
 
 function getYear(){
     return new Promise((resolve,reject)=>{

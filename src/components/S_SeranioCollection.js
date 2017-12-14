@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { reactTranslateChangeLanguage } from 'translate-components';
+import Translate from 'translate-components';
 
 class S_SeranioCollection extends Component {
     constructor(props){
@@ -20,7 +22,7 @@ class S_SeranioCollection extends Component {
 
     render () {
         const {SeranioCollection,updateSCollectionById} =  this.props;
-        const sceneriosCollect = [];
+        const sceneriosCollect = [];        
         if(updateSCollectionById){
             SeranioCollection.forEach(element=>{
                 if(element.id == updateSCollectionById){
@@ -47,7 +49,7 @@ class S_SeranioCollection extends Component {
         return (
             <div>
                 <div className="RegionLevel">
-                    <label className="textfont">Scenario Collection</label>
+                    <label className="textfont"><Translate>Scenario Collection</Translate></label>
                     <div className="form-group">
                          <select className="form-control"   onChange={this.selectSeranioHandler} >
                             {

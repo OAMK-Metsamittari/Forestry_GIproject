@@ -36,20 +36,14 @@
     border-radius:0;     
 }
 
-.navbar-custom .navbar-nav > li > a:hover {
-    color:#00af66;
-    background:white; 
-    
-   
-  }
+
 
   .navbar-custom .navbar-nav > li > a {
     color:white;
     font-size:16px;
     font-weight:bold;
     font-family: sans-serif;
-    list-style-type: none;
-   
+    list-style-type: none;   
   }
 
  .logo{
@@ -60,6 +54,16 @@
          
   }
 
+  .navbar-custom .navbar-nav > li > a:hover {
+    color:#00af66;
+    background:white;  
+  }
+
+  .navbar-custom .navbar-nav > li > a:active {
+    color:#00af66;
+    background:white;  
+  }
+
   .logo:hover{
     border:1px solid #00af66;    
   }
@@ -68,9 +72,11 @@
     background-color:white !important;
  }
 
- .language{
+ .language{    
      margin-top:20px;
  }
+
+ 
  /* header end */
 
  /* graph begin */
@@ -105,4 +111,6 @@
 
  /* graph end */
 
- 
+ rect .highcharts-background{
+     background-color:red;
+ }

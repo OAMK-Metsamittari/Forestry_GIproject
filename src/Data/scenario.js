@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Translate from 'translate-components';
+import { reactTranslateChangeLanguage } from 'translate-components';
 
 function getScenario(sId,rId){  
     const scenarioCollectionId = sId || 6;

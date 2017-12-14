@@ -1,0 +1,55 @@
+{    
+   "":{
+     "en":"",
+     "fi":""
+   },
+   "Select Scenarios":{
+    "en":"Select Scenarios",
+    "fi":"Valitse Skenaariot"
+  },
+  "Region Level":{
+    "en":"Region Level",
+    "fi":"Alueellinen Taso"
+  },
+  "Region":{
+    "en":"Region",
+    "fi":"Alue"
+  },
+  "Scenario Collection":{
+    "en":"Scenario Collection",
+    "fi":"Skenaario kokoelma"
+  },
+  "scenarios":{
+      "en":"Scenarios",
+      "fi":"Skenaariot"
+    },
+    "Time Period":{
+      "en":"Time Period",
+      "fi":"Ajanjakso"
+    },
+    "Select Indicators":{
+      "en":"Select Indicators",
+      "fi":"Valitse Merkkivalot"
+    },
+    "Polar column chart(single)":{
+      "en":"Polar column chart(Single)",
+      "fi":"Polaarinen Sarake Kartoittaa(Yksittäinen)"
+    },
+    "Polar column chart(many)":{
+      "en":"Polar column chart(many)",
+      "fi":"Polaarinen Sarake Kartoittaa(Monet)"
+    },
+    "Bar chart":{
+      "en":"Bar chart",
+      "fi":"Baari Kartoittaa"
+    },
+    "Table chart":{
+      "en":"Table chart",
+      "fi":"Pöytä Kartoittaa"
+    },
+    "en":{
+      "en":"en",
+      "fi":"fi"
+    }
+
+  }

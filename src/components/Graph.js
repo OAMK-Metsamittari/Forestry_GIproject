@@ -6,6 +6,8 @@ import HighchartsMore from 'highcharts/js/highcharts-more.js'
 import axios from 'axios';
 import ReactTable from 'reacttable';
 import '../assets/Style.css';
+import Translate from 'translate-components';
+import { reactTranslateChangeLanguage } from 'translate-components';
 HighchartsMore(Highcharts)
 
 
@@ -230,6 +232,10 @@ class Graph extends Component {
             }
          } );
     }
+
+    toogleDiv(){
+       alert("hello");
+    }
   render() {   
     const divStyle = {
         color: 'blue',
@@ -248,12 +254,12 @@ class Graph extends Component {
                     <div className="col-md-12"> 
                         <div className="graphRepresent">                       
                             <RadioButton value="singlescenario"  onChange={this.singlepolar}>
-                                <p className="graphName">Polar column chart(single)</p>
+                                <p className="graphName"><Translate>Polar column chart(single)</Translate></p>
                             </RadioButton>
                         </div>
                         <div className="graphRepresent"> 
                             <RadioButton value="manyscenariossep" onChange={this.manypolars}>
-                                <p className="graphName"> Polar column chart(many)</p>
+                                <p className="graphName"><Translate>Polar column chart(many)</Translate></p>
                             </RadioButton>
                          </div>
                     </div>
@@ -262,12 +268,12 @@ class Graph extends Component {
                     <div className="col-md-12">
                         <div className="graphRepresent">
                             <RadioButton value="manyscenarioschart" onChange={this.barchart}>
-                                <p className="graphName"> Bar chart</p>
+                                <p className="graphName"><Translate>Bar chart</Translate></p>
                             </RadioButton>
                         </div>
-                        <div className="graphRepresent">
+                        <div className="graphRepresent" onClick={this.toogleDiv}>
                             <RadioButton value="manyscenariosbar" onChange={this.table}>
-                                <p className="graphName"> Table chart</p>
+                                <p className="graphName"><Translate>Table chart</Translate></p>
                             </RadioButton> 
                         </div>                         
                     </div>
