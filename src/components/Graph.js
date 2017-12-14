@@ -232,10 +232,7 @@ class Graph extends Component {
             }
          } );
     }
-
-    toogleDiv(){
-       alert("hello");
-    }
+   
   render() {   
     const divStyle = {
         color: 'blue',
