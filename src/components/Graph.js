@@ -9,6 +9,7 @@ import Translate from 'translate-components';
 import { reactTranslateChangeLanguage } from 'translate-components';
 import ToggleDisplay from 'react-toggle-display';
 import _ from 'lodash';
+import PrintTemplate from 'react-print';
 
 
 
@@ -20,7 +21,7 @@ class Graph extends Component {
         super(props); 
         this.state = { show: false };
         this.getValueForGraph = this.getValueForGraph.bind(this); 
-        this.tablechart = this.tablechart.bind(this); 
+        this.PrintGraph = this.PrintGraph.bind(this); 
         this.handleClick = this.handleClick.bind(this);       
     }
 
@@ -29,9 +30,7 @@ class Graph extends Component {
           show: !this.state.show
         })};
 
-    tablechart(){
-
-    }
+   
     getValueForGraph(){
         const finalValue = [];
         this.props.scenario.forEach(element=>{           
@@ -65,8 +64,7 @@ class Graph extends Component {
              })
              scenarioId.push(element.scenarioId);       
          }     
-        })
-        console.log(result);          
+        })                  
         return result;
     }
 
@@ -105,8 +103,7 @@ class Graph extends Component {
             })
             scenarioId.push(element.scenarioId);       
         }     
-       }) 
-              
+       })               
        return result;    
     }
 
@@ -262,38 +259,12 @@ class Graph extends Component {
             });
     }
 
-<<<<<<< HEAD
-    
 
-    
-=======
-    table =()=>{
-        Highcharts.chart('chart', {
-            data: {
-                table: 'datatable'
-            },
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Data extracted from a HTML table in the page'
-            },
-            yAxis: {
-                allowDecimals: false,
-                title: {
-                    text: 'Units'
-                }
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                        this.point.y + ' ' + this.point.name.toLowerCase();
-                }
-            }
-         } );
+    PrintGraph(){
+        window.frames["print_frame"].document.body.innerHTML = document.getElementById("printGraph").innerHTML;
+        window.frames["print_frame"].window.focus();
+        window.frames["print_frame"].window.print();
     }
-   
->>>>>>> f88555bd9810fdfa0db94ce186c1f1842a70c184
   render() {   
     const divStyle = {
         color: 'blue',
@@ -303,10 +274,7 @@ class Graph extends Component {
     
     IndicatorName.forEach(function(obj) {
         if (Indicator.indexOf(obj) === -1) Indicator.push(obj);
-    });
-
-   
-    
+    });    
     
     return (
         <div className="col-md-12 well well-sm indicator">
@@ -315,9 +283,9 @@ class Graph extends Component {
                     <figure>
                     </figure>
                 </div>
-                <div className="col-md-12" >
-                
-                    <ToggleDisplay show={this.state.show}> 
+                <div className="col-md-12" >               
+                    <ToggleDisplay show={this.state.show}>   
+                     <div id="printGraph">                 
                        <div>
                            <h3 className="locationHeader">{this.props.regionName}({this.props.period})</h3>
                        </div>                    
@@ -333,8 +301,26 @@ class Graph extends Component {
                             <tbody>                             
                                  {this.renderData(this.getValueForTable())}                                                                                  
                             </tbody>
-                        </table>                      
-                    </ToggleDisplay> 
+                        </table>  
+                    </div>                    
+                    
+                    <div className="col-md-12">
+                        <div className="col-md-8">
+                        </div>
+                        <div className="col-md-1">
+                            <button type="button" class="btn btn-default btn-sm btndownload">
+                                <span class="glyphicon glyphicon-cloud-download icondownload"></span>  
+                            </button>
+                        </div>
+                        <div className="col-md-1">
+                            <button type="button" class="btn btn-default btn-sm btndownload" onClick={this.PrintGraph}>
+                                <span class="glyphicon glyphicon-print"></span>                        
+                            </button>
+                        </div>
+                        <div className="col-md-2">                        
+                        </div>
+                    </div>                  
+                    </ToggleDisplay>                    
                 </div>
              </div>
             <div > 
@@ -370,6 +356,7 @@ class Graph extends Component {
                 </div>
             </RadioGroup> 
             </div>
+            <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
         </div>
       
     );   

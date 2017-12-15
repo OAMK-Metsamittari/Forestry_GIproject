@@ -136,4 +136,14 @@
      font-size:12px;
  }
 
+ .btndownload{
+     background-color:green;
+     color:white;
+ } 
+
+ .btndownload:hover{
+    background-color:green;
+    color:yellow;
+}
+ 
  
