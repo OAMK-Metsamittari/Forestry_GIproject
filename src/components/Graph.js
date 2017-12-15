@@ -13,6 +13,8 @@ import PrintTemplate from 'react-print';
 import fileSaver from 'file-saver';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
+require('highcharts/modules/exporting')(Highcharts);
+
 HighchartsMore(Highcharts)
 
 
@@ -143,76 +145,9 @@ class Graph extends Component {
             },
             series:this.getValueForGraph()             
         });
-    }
-
-    manypolars = () =>{
-        Highcharts.chart('chart', {
-            
-            title: {
-                text: 'Combination chart'
-            },
-            xAxis: {
-                categories: ['Apples', 'Oranges', 'Pears', 'Bananas', 'Plums']
-            },
-            labels: {
-                items: [{
-                    html: 'Total fruit consumption',
-                    style: {
-                        left: '50px',
-                        top: '18px',
-                        color: (Highcharts.theme && Highcharts.theme.textColor) || 'black'
-                    }
-                }]
-            },
-            series: [{
-                type: 'column',
-                name: 'Jane',
-                data: [3, 2, 1, 3, 4]
-            }, {
-                type: 'column',
-                name: 'John',
-                data: [2, 3, 5, 7, 6]
-            }, {
-                type: 'column',
-                name: 'Joe',
-                data: [4, 3, 3, 9, 0]
-            }, {
-                type: 'spline',
-                name: 'Average',
-                data: [3, 2.67, 3, 6.33, 3.33],
-                marker: {
-                    lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[3],
-                    fillColor: 'white'
-                }
-            }, {
-                type: 'pie',
-                name: 'Total consumption',
-                data: [{
-                    name: 'Jane',
-                    y: 13,
-                    color: Highcharts.getOptions().colors[0] // Jane's color
-                }, {
-                    name: 'John',
-                    y: 23,
-                    color: Highcharts.getOptions().colors[1] // John's color
-                }, {
-                    name: 'Joe',
-                    y: 19,
-                    color: Highcharts.getOptions().colors[2] // Joe's color
-                }],
-                center: [100, 80],
-                size: 100,
-                showInLegend: false,
-                dataLabels: {
-                    enabled: false
-                }
-            }]
-        });
-    }
+    }   
 
     singlepolar = () =>{
-
      
         Highcharts.chart('chart', {
             
@@ -221,7 +156,7 @@ class Graph extends Component {
                 },
             
                 title: {
-                    text: 'Highcharts Polar Chart'
+                    text: this.props.regionName +"(" + this.props.period +")"
                 },
             
                 pane: {
@@ -287,8 +222,7 @@ class Graph extends Component {
                     <figure>
                     </figure>
                 </div>  
-                <div className="col-md-12" >
-                             
+                <div className="col-md-12" >                             
                     <ToggleDisplay show={this.state.show}>   
                      <div id="printGraph">                 
                        <div>
@@ -336,33 +270,28 @@ class Graph extends Component {
               
             <RadioGroup onChange={ this.onChange }  horizontal>
                 <div className="row sidespace">
-                    <div className="col-md-12">                    
-                        <div className="graphRepresent">                                      
-                            <RadioButton value="singlescenario"  onChange={this.singlepolar}>
-                             <p className="graphName"><Translate>Polar column chart(single)</Translate></p> 
-                            </RadioButton>                           
-                        </div>                       
-                        <div className="graphRepresent"> 
-                            <RadioButton value="manyscenariossep" onChange={this.manypolars}>
-                                <p className="graphName"><Translate>Polar column chart(many)</Translate></p>
-                            </RadioButton>
-                         </div>
-                    </div>
-                </div>
-                <div className="row sidespace">
-                    <div className="col-md-12">                       
-                        <div className="graphRepresent">
-                            <RadioButton value="manyscenarioschart" onChange={this.barchart}>
-                                <p className="graphName"><Translate>Bar chart</Translate></p>
-                            </RadioButton>
-                        </div>
+                    <div className="col-md-12"> 
                         <div className="graphRepresent" onClick={ () => this.handleClick() }>
                             <RadioButton value="manyscenariosbar">
                                 <p className="graphName"><Translate>Table chart</Translate></p>                                
                             </RadioButton> 
-                        </div>                                                 
+                        </div> 
+                        <div className="graphRepresent">
+                            <RadioButton value="manyscenarioschart" onChange={this.barchart}>
+                                <p className="graphName"><Translate>Bar chart</Translate></p>
+                            </RadioButton>
+                        </div>                               
                     </div>
                 </div>
+                <div className="row sidespace">
+                  <div className="col-md-12">                   
+                    <div className="graphRepresent">                                      
+                        <RadioButton value="singlescenario"  onChange={this.singlepolar}>
+                             <p className="graphName"><Translate>Polar column chart(single)</Translate></p> 
+                        </RadioButton>                           
+                    </div>     
+                </div>
+               </div>
             </RadioGroup> 
             </div>
             <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
