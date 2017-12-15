@@ -114,3 +114,26 @@
  rect .highcharts-background{
      background-color:red;
  }
+
+ .tableBorder{
+     border:1px black solid;
+ }
+
+ .data{
+     margin:20px;     
+     font-weight:bold;         
+ }
+
+ .table  {
+    border:2px solid green;    
+ }
+
+ .locationHeader{
+     text-align: center;
+     margin:0px 0px 20px 0px;
+ }
+ .indicatorHeader{
+     font-size:12px;
+ }
+
+ 

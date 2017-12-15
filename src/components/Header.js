@@ -6,9 +6,9 @@ import { reactTranslateChangeLanguage } from 'translate-components';
 class Header extends Component {
 
     constructor(props){
-        super(props);              
-    }
-
+        super(props); 
+                   
+    }  
     
 
     render () {        
@@ -27,8 +27,8 @@ class Header extends Component {
                         </div>
                         <div className="collapse navbar-collapse" id="navbar-dropdown">        
                             <ul className="nav navbar-nav navbar-right">                            
-                            <li ><a href="#" data-toggle="modal" data-target="#register-modal" className="language"onClick={reactTranslateChangeLanguage.bind(this, 'fi')} >Fi</a></li>
-                            <li ><a href="#" data-toggle="modal" data-target="#login-modal" className="language" onClick={reactTranslateChangeLanguage.bind(this, 'en')} >En</a></li>
+                            <li ><a href="#" data-toggle="modal" data-target="#register-modal" className="language" onClick={reactTranslateChangeLanguage.bind(this, 'fi')} >Fi</a></li>
+                            <li ><a href="#" data-toggle="modal" data-target="#login-modal" className="language">En</a></li>
                             </ul>
                         </div>                        
                     </div>

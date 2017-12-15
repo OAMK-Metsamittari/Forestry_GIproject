@@ -23,27 +23,26 @@ class I_Indicator extends Component {
     let indicatorName = [];
     let finalName = [];
     const selectedNumberOfSeranio = this.props.seranioNumber;
-    
+   
     let iLen = event.target.options.length;
     for (var count=0; count<iLen; count++) {
         var opt = event.target.options[count];        
+              
         if(this.state.totalSelectedIndicator.includes(opt.value)|| this.state.totalSelectedIndicatorName.includes(opt.text)){
           let index = this.state.totalSelectedIndicator.indexOf(opt.value)
           this.state.totalSelectedIndicator.splice(index, 1);
-          let valueIndex =   this.state.totalSelectedIndicatorName.indexOf(opt.text);
-          console.log(valueIndex); 
+          let valueIndex =   this.state.totalSelectedIndicatorName.indexOf(opt.text);           
           this.state.totalSelectedIndicatorName.splice(valueIndex,1);         
         }       
-        if (opt.selected) {
+        if(opt.selected){          
           result.push(opt.value || opt.text);
           indicatorName.push(opt.text);
         }
+        
       }  
       
-    final = this.state.totalSelectedIndicator.concat(result);
+    final = this.state.totalSelectedIndicator.concat(result); 
     finalName = this.state.totalSelectedIndicatorName.concat(indicatorName);
-   
-   
     this.setState({totalSelectedIndicatorName:finalName});
     this.setState({totalSelectedIndicator:final},function(){     
       if(this.state.totalSelectedIndicator.length*selectedNumberOfSeranio>20){

@@ -4,19 +4,34 @@ import { RadioGroup, RadioButton } from 'react-radio-buttons';
 import Highcharts from 'highcharts';
 import HighchartsMore from 'highcharts/js/highcharts-more.js'
 import axios from 'axios';
-import ReactTable from 'reacttable';
 import '../assets/Style.css';
 import Translate from 'translate-components';
 import { reactTranslateChangeLanguage } from 'translate-components';
+import ToggleDisplay from 'react-toggle-display';
+import _ from 'lodash';
+
+
+
 HighchartsMore(Highcharts)
 
 
 class Graph extends Component {
     constructor(props){
         super(props); 
-        this.getValueForGraph = this.getValueForGraph.bind(this);     
+        this.state = { show: false };
+        this.getValueForGraph = this.getValueForGraph.bind(this); 
+        this.tablechart = this.tablechart.bind(this); 
+        this.handleClick = this.handleClick.bind(this);       
     }
 
+    handleClick() {
+        this.setState({
+          show: !this.state.show
+        })};
+
+    tablechart(){
+
+    }
     getValueForGraph(){
         const finalValue = [];
         this.props.scenario.forEach(element=>{           
@@ -50,9 +65,49 @@ class Graph extends Component {
              })
              scenarioId.push(element.scenarioId);       
          }     
-        }) 
-
+        })
+        console.log(result);          
         return result;
+    }
+
+    getValueForTable(){
+        const finalValue = [];
+        this.props.scenario.forEach(element=>{           
+            const{Indicator} = this.props;          
+            element.values.map(value=>{              
+                let valIndicator = value.indicatorId.toString();
+                let valSeranio = value.scenarioId.toString(); 
+                let valTime = value.timePeriodId.toString();            
+                if((this.props.Indicator.includes(valIndicator))&&(this.props.selectedSeranio.includes(valSeranio))&&(this.props.yearId.includes(valTime))){
+                    finalValue.push(value);
+                }           
+            })         
+          finalValue.sort(function(a, b) { 
+             return a.indicatorId - b.indicatorId;                
+           });             
+        })   
+       
+        let final = [],result =[],scenarioId = [];  
+        finalValue.map((element,index)=>{      
+         final = []; 
+         let seranioName = this.props.SeranioName[index];                   
+         if((scenarioId.includes(element.scenarioId))!=true){       
+            finalValue.map((checkelement)=>{
+                if(element.scenarioId == checkelement.scenarioId){
+                    final.push(checkelement.value);
+                }                  
+            }) 
+            let seranioName = this.props.SeranioName[index];
+            final.push(seranioName);             
+            result.push({
+                name:seranioName,
+                data:final
+            })
+            scenarioId.push(element.scenarioId);       
+        }     
+       }) 
+              
+       return result;    
     }
 
     barchart= () => {
@@ -207,39 +262,23 @@ class Graph extends Component {
             });
     }
 
-    table =()=>{
-        Highcharts.chart('chart', {
-            data: {
-                table: 'datatable'
-            },
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Data extracted from a HTML table in the page'
-            },
-            yAxis: {
-                allowDecimals: false,
-                title: {
-                    text: 'Units'
-                }
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                        this.point.y + ' ' + this.point.name.toLowerCase();
-                }
-            }
-         } );
-    }
+    
 
-    toogleDiv(){
-       alert("hello");
-    }
+    
   render() {   
     const divStyle = {
         color: 'blue',
-    };  
+    }; 
+    const{IndicatorName} = this.props;
+    var Indicator = [];
+    
+    IndicatorName.forEach(function(obj) {
+        if (Indicator.indexOf(obj) === -1) Indicator.push(obj);
+    });
+
+   
+    
+    
     return (
         <div className="col-md-12 well well-sm indicator">
               <div className="row">
@@ -247,16 +286,38 @@ class Graph extends Component {
                     <figure>
                     </figure>
                 </div>
+                <div className="col-md-12" >
+                
+                    <ToggleDisplay show={this.state.show}> 
+                       <div>
+                           <h3 className="locationHeader">{this.props.regionName}({this.props.period})</h3>
+                       </div>                    
+                        <table className="table table-bordered ">
+                            <thead>                                                               
+                                    {
+                                        Indicator.map(element=> 
+                                            <th className="indicatorHeader">{element}</th>                                                                
+                                        )
+                                    }  
+                                <th></th>                                                                                      
+                            </thead>
+                            <tbody>                             
+                                 {this.renderData(this.getValueForTable())}                                                                                  
+                            </tbody>
+                        </table>                      
+                    </ToggleDisplay> 
+                </div>
              </div>
-            <div >
-            <RadioGroup onChange={ this.onChange } horizontal>
+            <div > 
+              
+            <RadioGroup onChange={ this.onChange }  horizontal>
                 <div className="row sidespace">
-                    <div className="col-md-12"> 
-                        <div className="graphRepresent">                       
+                    <div className="col-md-12">                    
+                        <div className="graphRepresent">                                      
                             <RadioButton value="singlescenario"  onChange={this.singlepolar}>
-                                <p className="graphName"><Translate>Polar column chart(single)</Translate></p>
-                            </RadioButton>
-                        </div>
+                             <p className="graphName"><Translate>Polar column chart(single)</Translate></p> 
+                            </RadioButton>                           
+                        </div>                       
                         <div className="graphRepresent"> 
                             <RadioButton value="manyscenariossep" onChange={this.manypolars}>
                                 <p className="graphName"><Translate>Polar column chart(many)</Translate></p>
@@ -265,25 +326,45 @@ class Graph extends Component {
                     </div>
                 </div>
                 <div className="row sidespace">
-                    <div className="col-md-12">
+                    <div className="col-md-12">                       
                         <div className="graphRepresent">
                             <RadioButton value="manyscenarioschart" onChange={this.barchart}>
                                 <p className="graphName"><Translate>Bar chart</Translate></p>
                             </RadioButton>
                         </div>
-                        <div className="graphRepresent" onClick={this.toogleDiv}>
-                            <RadioButton value="manyscenariosbar" onChange={this.table}>
-                                <p className="graphName"><Translate>Table chart</Translate></p>
+                        <div className="graphRepresent" onClick={ () => this.handleClick() }>
+                            <RadioButton value="manyscenariosbar">
+                                <p className="graphName"><Translate>Table chart</Translate></p>                                
                             </RadioButton> 
-                        </div>                         
+                        </div>                                                 
                     </div>
                 </div>
             </RadioGroup> 
             </div>
         </div>
       
-    );
+    );   
   }
+  renderData(Indicator) {         
+    return _.map(Indicator, indicate => {       
+          return (            
+            <tr>               
+                {this.getData(indicate)}                
+            </tr>            
+          );        
+    });
+  }
+
+    getData(Indicator) {          
+    return _.map(Indicator.data, indicate => {       
+            return (        
+                <td className="data" >
+                    {indicate}
+                </td>
+                      
+            );        
+    });
+    }
 }
 
 export default Graph;
