@@ -118,9 +118,9 @@ class App extends Component {
     return (
      <div className="App">                 
         <div className="row">      
-        <div className="col-md-12" >        
-          <Header />          
-        </div>             
+          <div className="col-md-12" >        
+            <Header />          
+          </div>             
         </div>
         <div className="row">       
           <div className="col-md-3 well well-sm indicator" >  

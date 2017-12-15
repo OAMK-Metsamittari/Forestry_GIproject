@@ -139,6 +139,7 @@
  .btndownload{
      background-color:green;
      color:white;
+     border-radius:8px;
  } 
 
  .btndownload:hover{

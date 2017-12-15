@@ -10,8 +10,8 @@ import { reactTranslateChangeLanguage } from 'translate-components';
 import ToggleDisplay from 'react-toggle-display';
 import _ from 'lodash';
 import PrintTemplate from 'react-print';
-
-
+import fileSaver from 'file-saver';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 HighchartsMore(Highcharts)
 
@@ -22,7 +22,7 @@ class Graph extends Component {
         this.state = { show: false };
         this.getValueForGraph = this.getValueForGraph.bind(this); 
         this.PrintGraph = this.PrintGraph.bind(this); 
-        this.handleClick = this.handleClick.bind(this);       
+        this.handleClick = this.handleClick.bind(this);               
     }
 
     handleClick() {
@@ -265,6 +265,10 @@ class Graph extends Component {
         window.frames["print_frame"].window.focus();
         window.frames["print_frame"].window.print();
     }
+
+   
+
+      
   render() {   
     const divStyle = {
         color: 'blue',
@@ -282,14 +286,15 @@ class Graph extends Component {
                 <div id="chart" className="col-md-12" > 
                     <figure>
                     </figure>
-                </div>
-                <div className="col-md-12" >               
+                </div>  
+                <div className="col-md-12" >
+                             
                     <ToggleDisplay show={this.state.show}>   
                      <div id="printGraph">                 
                        <div>
-                           <h3 className="locationHeader">{this.props.regionName}({this.props.period})</h3>
+                           <h3 className="locationHeader" id="fileName">{this.props.regionName}({this.props.period})</h3>
                        </div>                    
-                        <table className="table table-bordered ">
+                        <table className="table table-bordered " id="table-to-xls">                            
                             <thead>                                                               
                                     {
                                         Indicator.map(element=> 
@@ -307,17 +312,21 @@ class Graph extends Component {
                     <div className="col-md-12">
                         <div className="col-md-8">
                         </div>
-                        <div className="col-md-1">
-                            <button type="button" class="btn btn-default btn-sm btndownload">
-                                <span class="glyphicon glyphicon-cloud-download icondownload"></span>  
-                            </button>
+                        <div className="col-md-2">
+                        <ReactHTMLTableToExcel
+                            id="test-table-xls-button"
+                            className="download-table-xls-button btndownload"
+                            table="table-to-xls"
+                            filename="statisticTable"
+                            sheet="tablexls"
+                            buttonText="Download"/>                             
                         </div>
                         <div className="col-md-1">
                             <button type="button" class="btn btn-default btn-sm btndownload" onClick={this.PrintGraph}>
                                 <span class="glyphicon glyphicon-print"></span>                        
                             </button>
                         </div>
-                        <div className="col-md-2">                        
+                        <div className="col-md-1">                        
                         </div>
                     </div>                  
                     </ToggleDisplay>                    
