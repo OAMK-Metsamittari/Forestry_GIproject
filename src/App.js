@@ -118,9 +118,7 @@ class App extends Component {
     return (
      <div className="App">                 
         <div className="row">      
-        <div className="col-md-12" >
-        <div id="react-no-print">Regular Stuff Before Printing</div>
-	      <div id="print-mount"></div>
+        <div className="col-md-12" >        
           <Header />          
         </div>             
         </div>
