@@ -5,11 +5,11 @@
    },
    "Select Scenarios":{
     "en":"Select Scenarios",
-    "fi":"Valitse Skenaariot"
+    "fi":"Valitse skenaariot"
   },
   "Region Level":{
     "en":"Region Level",
-    "fi":"Alueellinen Taso"
+    "fi":"Alueellinen taso"
   },
   "Region":{
     "en":"Region",
@@ -17,7 +17,7 @@
   },
   "Scenario Collection":{
     "en":"Scenario Collection",
-    "fi":"Skenaario kokoelma"
+    "fi":"Skenaariokokoelma"
   },
   "scenarios":{
       "en":"Scenarios",
@@ -29,11 +29,11 @@
     },
     "Select Indicators":{
       "en":"Select Indicators",
-      "fi":"Valitse Merkkivalot"
+      "fi":"Valitse indikaattorit"
     },
     "Polar column chart(single)":{
       "en":"Polar column chart(Single)",
-      "fi":"Polaarinen Sarake Kartoittaa(Yksittäinen)"
+      "fi":"Polaarinen kaavio"
     },
     "Polar column chart(many)":{
       "en":"Polar column chart(many)",
@@ -41,11 +41,11 @@
     },
     "Bar chart":{
       "en":"Bar chart",
-      "fi":"Baari Kartoittaa"
+      "fi":"Pylväskaavio"
     },
     "Table chart":{
       "en":"Table chart",
-      "fi":"Pöytä Kartoittaa"
+      "fi":"Taulukkokaavio"
     },
     "en":{
       "en":"en",
