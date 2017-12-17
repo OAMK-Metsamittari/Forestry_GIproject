@@ -12,6 +12,7 @@ import _ from 'lodash';
 import PrintTemplate from 'react-print';
 import fileSaver from 'file-saver';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import $ from "jquery";
 
 require('highcharts/modules/exporting')(Highcharts);
 
@@ -24,7 +25,8 @@ class Graph extends Component {
         this.state = { show: false };
         this.getValueForGraph = this.getValueForGraph.bind(this); 
         this.PrintGraph = this.PrintGraph.bind(this); 
-        this.handleClick = this.handleClick.bind(this);               
+        this.handleClick = this.handleClick.bind(this);
+        this.GraphToggle = this.GraphToggle.bind(this);               
     }
 
     handleClick() {
@@ -196,12 +198,16 @@ class Graph extends Component {
 
 
     PrintGraph(){
+       
         window.frames["print_frame"].document.body.innerHTML = document.getElementById("printGraph").innerHTML;
         window.frames["print_frame"].window.focus();
         window.frames["print_frame"].window.print();
     }
+    
 
-   
+    GraphToggle(){        
+        $( "#chart" ).toggle();
+    }
 
       
   render() {   
@@ -267,32 +273,33 @@ class Graph extends Component {
                 </div>
              </div>
             <div > 
-              
-            <RadioGroup onChange={ this.onChange }  horizontal>
+              <RadioGroup onChange={ this.onChange }  horizontal>
                 <div className="row sidespace">
-                    <div className="col-md-12"> 
+                    <div className="col-md-6"> 
                         <div className="graphRepresent" onClick={ () => this.handleClick() }>
                             <RadioButton value="manyscenariosbar">
                                 <p className="graphName"><Translate>Table chart</Translate></p>                                
                             </RadioButton> 
-                        </div> 
-                        <div className="graphRepresent">
+                        </div>
+                    </div>
+                    <div className="col-md-6"> 
+                        <div className="graphRepresent" onClick={ () => this.GraphToggle() }>
                             <RadioButton value="manyscenarioschart" onChange={this.barchart}>
                                 <p className="graphName"><Translate>Bar chart</Translate></p>
                             </RadioButton>
-                        </div>                               
-                    </div>
+                        </div>                                                  
+                    </div>                    
                 </div>
                 <div className="row sidespace">
                   <div className="col-md-12">                   
-                    <div className="graphRepresent">                                      
+                    <div className="graphRepresent" onClick={ () => this.GraphToggle() }>                                      
                         <RadioButton value="singlescenario"  onChange={this.singlepolar}>
                              <p className="graphName"><Translate>Polar column chart(single)</Translate></p> 
                         </RadioButton>                           
                     </div>     
                 </div>
-               </div>
-            </RadioGroup> 
+               </div> 
+            </RadioGroup>  
             </div>
             <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
         </div>

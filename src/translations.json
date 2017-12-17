@@ -1,8 +1,5 @@
 {    
-   "":{
-     "en":"",
-     "fi":""
-   },
+   
    "Select Scenarios":{
     "en":"Select Scenarios",
     "fi":"Valitse skenaariot"
@@ -46,10 +43,7 @@
     "Table chart":{
       "en":"Table chart",
       "fi":"Taulukkokaavio"
-    },
-    "en":{
-      "en":"en",
-      "fi":"fi"
     }
+   
 
   }
