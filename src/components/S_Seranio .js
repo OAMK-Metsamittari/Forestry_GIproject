@@ -37,7 +37,7 @@ class S_Seranio  extends Component {
             <div className="row">
                 <div className="col-md-12" >
                      <div className="form-group">
-                     <label className="textfont"><Translate>scenarios</Translate></label> 
+                     <label className="textfont"><Translate>scenarios</Translate> <span className="required">*</span></label> 
                         <select className="form-control" id="Example" multiple={true} onChange={this.selectHandler}>
                             {            
                             scenario.map(element=>

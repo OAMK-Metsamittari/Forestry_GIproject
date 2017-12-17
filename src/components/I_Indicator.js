@@ -4,6 +4,7 @@ import '../assets/Style.css';
 import _ from 'lodash';
 import Translate from 'translate-components';
 import { reactTranslateChangeLanguage } from 'translate-components';
+import $ from "jquery";
 
 
 class I_Indicator extends Component {
@@ -52,7 +53,8 @@ class I_Indicator extends Component {
         this.props.selectedIndicator(final,indicatorName);       
       }
     }); 
-          
+     $('#btngraph').css("display","block");
+     $("#showgraph").css("display","none");     
   }
 
   render() {
@@ -60,7 +62,7 @@ class I_Indicator extends Component {
         return(
           <div className="row">
               <div className="col-md-12">
-                <h2 className="headIndicator"><Translate>Select Indicators</Translate></h2>
+                <h2 className="headIndicator"><Translate>Select Indicators</Translate> <span>*</span></h2>
                 <ul>
                   {this.renderIndicatorCatagory()}
                 </ul>

@@ -22,7 +22,7 @@ class S_Region extends Component {
                 <div className="col-md-12">                    
                     <div className="form-group">
                     <label className="textfont"><Translate>Region</Translate></label>                    
-                        <select className="form-control"   onChange={this.selectHandler} >
+                        <select className="form-control" onChange={this.selectHandler} >
                         {
                             region.map(element=>
                             <option value={element.id} key={element.id}>{element.name}</option>) 

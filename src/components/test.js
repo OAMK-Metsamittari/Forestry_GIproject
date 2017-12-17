@@ -263,77 +263,85 @@ class Graph extends Component {
     };   
     
     return (
-        <div className="row well well-sm indicator"> 
-            <div id="showgraph">
-                <ReactHighcharts config = {config}></ReactHighcharts>
-            </div> 
-            <div id="chart" className="col-md-12" > 
-                <figure>
-                </figure>
-            </div> 
-            <ToggleDisplay show={this.state.show}>   
-                <div id="printGraph">                 
-                    <div>
-                       <h3 className="locationHeader" id="fileName">{this.props.regionName}({this.props.period})</h3>
-                    </div>                    
-                    <table className="table table-bordered " id="table-to-xls">                            
-                        <thead>                                                               
-                            {
-                                Indicator.map(element=> 
-                                <th className="indicatorHeader">{element}</th>                                                                
-                                )
-                            }  
-                            <th> </th>                                                                                      
-                        </thead>
-                       <tbody>                             
+        <div className="col-md-12 well well-sm indicator">
+              <div id="showgraph">
+                    <ReactHighcharts config = {config}></ReactHighcharts>
+              </div> 
+              <div className="row" >
+                <div id="chart" className="col-md-12" > 
+                    <figure>
+                    </figure>
+                </div>                 
+                <div className="row" >                             
+                    <ToggleDisplay show={this.state.show}>   
+                     <div id="printGraph">                 
+                       <div>
+                           <h3 className="locationHeader" id="fileName">{this.props.regionName}({this.props.period})</h3>
+                       </div>                    
+                        <table className="table table-bordered " id="table-to-xls">                            
+                            <thead>                                                               
+                                    {
+                                        Indicator.map(element=> 
+                                            <th className="indicatorHeader">{element}</th>                                                                
+                                        )
+                                    }  
+                                <th></th>                                                                                      
+                            </thead>
+                            <tbody>                             
                                  {this.renderData(this.getValueForTable())}                                                                                  
-                        </tbody>
-                    </table>  
-                </div>                    
+                            </tbody>
+                        </table>  
+                    </div>                    
                     
                     <div className="col-md-12">
                         <div className="col-md-8">
                         </div>
-                        <div className="col-md-3">
+                        <div className="col-md-2">
                         <ReactHTMLTableToExcel
                             id="test-table-xls-button"
                             className="download-table-xls-button btndownload"
                             table="table-to-xls"
                             filename="statisticTable"
                             sheet="tablexls"
-                            buttonText="Download"/> 
-                            <button type="button" class="btn btn-default btn-sm btndownload" onClick={this.PrintGraph}>
-                            <span class="glyphicon glyphicon-print"></span>                        
-                        </button>                            
-                        </div>                       
+                            buttonText="Download"/>                             
+                        </div>
                         <div className="col-md-1">
-                           
-                        </div>                       
+                            <button type="button" class="btn btn-default btn-sm btndownload" onClick={this.PrintGraph}>
+                                <span class="glyphicon glyphicon-print"></span>                        
+                            </button>
+                        </div>
+                        <div className="col-md-1">                        
+                        </div>
                     </div>                  
-            </ToggleDisplay>  
-            <div id="btngraph">         
-                <div className="col-md-4"> 
-                    <div className="graphRepresent" onClick={ () => this.handleClick() }>
-                        <RadioButton value="manyscenariosbar">
-                            <p className="graphName"><Translate>Table chart</Translate></p>                                
-                        </RadioButton> 
-                    </div>
-                </div>    
-                <div className="col-md-4">                   
+                    </ToggleDisplay>                    
+                </div>
+             </div>
+            <div  className="row" id="btngraph"> 
+              <RadioGroup onChange={ this.onChange }  horizontal>               
+                    <div className="col-md-12"> 
+                        <div className="graphRepresent" onClick={ () => this.handleClick() }>
+                            <RadioButton value="manyscenariosbar">
+                                <p className="graphName"><Translate>Table chart</Translate></p>                                
+                            </RadioButton> 
+                        </div>
+                    </div>              
+                  <div className="col-md-12">                   
                     <div className="graphRepresent" onClick={ () => this.GraphToggle() }>                                      
                         <RadioButton value="manyscenarioschart" onChange={this.barchart}>
                             <p className="graphName"><Translate>Bar chart</Translate></p>
-                        </RadioButton>                          
+                         </RadioButton>                          
                     </div>     
-                </div> 
-                <div className="col-md-4">                   
+                </div>              
+                <div className="col-md-12">                   
                     <div className="graphRepresent" onClick={ () => this.GraphToggle() }>                                      
                         <RadioButton value="singlescenario"  onChange={this.singlepolar}>
-                        <p className="graphName"><Translate>Polar column chart(single)</Translate></p> 
+                             <p className="graphName"><Translate>Polar column chart(single)</Translate></p> 
                         </RadioButton>                           
                     </div>     
-                </div>
-            </div>             
+                </div>               
+            </RadioGroup>  
+            </div>
+            <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
         </div>      
     );   
   }

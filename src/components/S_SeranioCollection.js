@@ -49,7 +49,7 @@ class S_SeranioCollection extends Component {
         return (
             <div>
                 <div className="RegionLevel">
-                    <label className="textfont"><Translate>Scenario Collection</Translate></label>
+                    <label className="textfont"><Translate>Scenario Collection</Translate> </label>
                     <div className="form-group">
                          <select className="form-control"   onChange={this.selectSeranioHandler} >
                             {

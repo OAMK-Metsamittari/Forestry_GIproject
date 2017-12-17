@@ -19,13 +19,13 @@ class S_RegionLevel extends Component {
             <div className="RegionLevel">  
                 <h2 className="headIndicator"><Translate>Select Scenarios</Translate></h2> 
                 <label className="textfont"><Translate>Region Level</Translate></label>            
-               <div className="form-group">                    
-                    <select className="form-control"   onChange={this.selectHandler} >
-                        {
-                            regionLevel.map(element=>
-                            <option value={element.id} key={element.id} >{element.name}</option>) 
-                        }                       
-                    </select>
+                <div className="form-group">                    
+                        <select className="form-control"   onChange={this.selectHandler} >
+                            {
+                                regionLevel.map(element=>
+                                <option value={element.id} key={element.id} >{element.name}</option>) 
+                            }                       
+                        </select>
                 </div>
             </div>
         )
