@@ -98,20 +98,19 @@
  .sidespace{
     margin:0px 10px 0px 0px;
 }
-.graphRepresent{
-    
+.graphRepresent{    
     width:100%;
     background:white;
     margin:20px;    
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;   
 }
 
-.graphRepresent:hover{
-    
+.graphRepresent:hover{   
     width:100%;
-    background:rgb(194, 231, 194);
+    background:#00af66;;
     margin:20px;    
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;   
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+     
 }
 
 .graphPolar{    
@@ -128,6 +127,10 @@
     padding:10px;
     text-align: center;
     margin-top:5px;   
+}
+
+.graphRepresent:hover .graphName{
+    color:white;
 }
 
 

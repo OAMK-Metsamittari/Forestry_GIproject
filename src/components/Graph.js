@@ -27,13 +27,9 @@ class Graph extends Component {
         this.getValueForGraph = this.getValueForGraph.bind(this); 
         this.PrintGraph = this.PrintGraph.bind(this); 
         this.handleClick = this.handleClick.bind(this);
-        this.GraphToggle = this.GraphToggle.bind(this);               
-    }
-
-    handleClick() {
-        this.setState({
-          show: !this.state.show
-        })};
+        this.GraphPolar = this.GraphPolar.bind(this); 
+        this.GraphBar = this.GraphBar.bind(this);                       
+    }   
 
    
     getValueForGraph(){
@@ -206,9 +202,29 @@ class Graph extends Component {
     }
     
 
-    GraphToggle(){        
-        $( "#chart" ).toggle();
+    GraphPolar(){        
+        $( "#chart" ).show();
+        $( "#tablechart" ).hide();
+        $("#GraphPolar").hide();
+        $("#GraphTable").show();
+        $("#GraphBar").show();       
+    } 
+    
+    GraphBar(){        
+        $( "#chart" ).show();
+        $( "#tablechart" ).hide();
+        $("#GraphBar").hide();
+        $("#GraphTable").show();
+        $("#GraphPolar").show();
     }
+  
+    handleClick() {        
+        $( "#tablechart" ).show();  
+        $( "#chart" ).hide();
+        $("#GraphTable").hide();  
+        $("#GraphBar").show();
+        $("#GraphPolar").show();  
+    };
 
       
   render() {   
@@ -271,7 +287,8 @@ class Graph extends Component {
                 <figure>
                 </figure>
             </div> 
-            <ToggleDisplay show={this.state.show}>   
+            <div >
+            <ToggleDisplay show={this.state.show} id="tablechart">   
                 <div id="printGraph">                 
                     <div>
                        <h3 className="locationHeader" id="fileName">{this.props.regionName}({this.props.period})</h3>
@@ -310,24 +327,25 @@ class Graph extends Component {
                            
                         </div>                       
                     </div>                  
-            </ToggleDisplay>  
+            </ToggleDisplay>
+            </div>  
             <div id="btngraph">         
-                <div className="col-md-4"> 
+                <div className="col-md-4" id="GraphTable"> 
                     <div className="graphRepresent" onClick={ () => this.handleClick() }>
                         <RadioButton value="manyscenariosbar">                        
                             <p className="graphName"><img src={require("../assets/table.png")} className="chartlogo"/><Translate>Table chart</Translate></p>                                
                         </RadioButton> 
                     </div>
                 </div>    
-                <div className="col-md-4">                   
-                    <div className="graphRepresent" onClick={ () => this.GraphToggle() }>                                      
+                <div className="col-md-4" id="GraphBar">                   
+                    <div className="graphRepresent" onClick={ () => this.GraphBar() }>                                      
                         <RadioButton value="manyscenarioschart" onChange={this.barchart}>
                             <p className="graphName"><img src={require("../assets/bar.png")} className="chartlogo"/><Translate>Bar chart</Translate></p>
                         </RadioButton>                          
                     </div>     
                 </div> 
-                <div className="col-md-4">                   
-                    <div className="graphRepresent" onClick={ () => this.GraphToggle() }>                                      
+                <div className="col-md-4" id="GraphPolar">                   
+                    <div className="graphRepresent" onClick={ () => this.GraphPolar() }>                                      
                         <RadioButton value="singlescenario"  onChange={this.singlepolar}>
                         <p className="graphName"><img src={require("../assets/pie.png")} className="chartlogo"/><Translate>Polar chart(single)</Translate></p> 
                         </RadioButton>                           

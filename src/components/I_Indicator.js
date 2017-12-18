@@ -44,6 +44,8 @@ class I_Indicator extends Component {
       
     final = this.state.totalSelectedIndicator.concat(result); 
     finalName = this.state.totalSelectedIndicatorName.concat(indicatorName);
+   
+    
     this.setState({totalSelectedIndicatorName:finalName});
     this.setState({totalSelectedIndicator:final},function(){     
       if(this.state.totalSelectedIndicator.length*selectedNumberOfSeranio>20){
