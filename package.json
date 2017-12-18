@@ -7,6 +7,7 @@
     "bootstrap": "^3.3.7",
     "downloadbutton": "^1.0.0",
     "file-saver": "^1.3.3",
+    "google-translate-api": "^2.3.0",
     "highcharts": "^6.0.3",
     "highcharts-exporting": "^0.1.2",
     "highcharts-more": "^0.1.2",

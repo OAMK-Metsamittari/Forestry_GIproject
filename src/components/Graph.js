@@ -236,52 +236,39 @@ class Graph extends Component {
     
     IndicatorName.forEach(function(obj) {
         if (Indicator.indexOf(obj) === -1) Indicator.push(obj);
-    }); 
-    
-    
-    const config = {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'Sample Graph'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: false
-                },
-                showInLegend: true
-            }
-        },
-        series: [{
-            name: 'Brands',
-            colorByPoint: true,
-            data: [{
-                name: 'Maximum economic removal',
-                y: 56.33
-            }, {
-                name: 'Climate and energy policy scenario',
-                y: 24.03,
-                sliced: true,
-                selected: true
-            }]
-        }]
-    
-    };   
+    });  
+   
     
     return (
         <div className="row well well-sm indicator"> 
-            <div id="showgraph">
-                <ReactHighcharts config = {config}></ReactHighcharts>
+            <div id="showgraph" className="col-md-12" >
+                <div className="row">
+                <div className="col-md-6" id="GraphTable"> 
+                    <div className="graphRepresent">
+                        <RadioButton value="manyscenariosbar">                        
+                            <p className="graphName"><img src={require("../assets/table.png")} className="chartlogo"/><Translate>Table chart</Translate></p>                                
+                        </RadioButton> 
+                    </div>
+                </div>    
+                <div className="col-md-6" id="GraphBar">                   
+                    <div className="graphRepresent" >                                      
+                        <RadioButton value="manyscenarioschart" >
+                            <p className="graphName"><img src={require("../assets/bar.png")} className="chartlogo"/><Translate>Bar chart</Translate></p>
+                        </RadioButton>                          
+                    </div>     
+                </div> 
+               </div> 
+               <div className="row">
+                <div className="col-sm-3"></div>
+               <div className="col-md-7" id="GraphPolar">                   
+                    <div className="graphRepresent" >                                      
+                        <RadioButton value="singlescenario">
+                        <p className="graphName"><img src={require("../assets/pie.png")} className="chartlogo"/><Translate>Polar chart(single)</Translate></p> 
+                        </RadioButton>                           
+                    </div>     
+                </div> 
+                <div className="col-sm-2"></div>  
+                </div>             
             </div> 
             <div id="chart" className="col-md-12" > 
                 <figure>

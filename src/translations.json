@@ -1,8 +1,9 @@
 {    
    
    "Select Scenarios":{
-    "en":"Select Scenarios",
-    "fi":"Valitse skenaariot"
+    "fi":"Valitse skenaariot",
+    "en":"Select Scenarios"
+   
   },
   "Region Level":{
     "en":"Region Level",
@@ -47,6 +48,18 @@
     "Required":{
       "en":"Required",
       "fi":"Edellytetään"
+    },
+    "en":{
+      "en":"en",
+      "fi":"fi"
+    },
+    "select the year":{
+      "en":"select the year",
+       "fi":"Valitse vuosi"
+    },
+    "Download":{
+      "en":"Download",
+      "fi":"ladata"
     }
    
 

@@ -13,10 +13,9 @@ import scenarioData from './Data/scenario.js';
 import regionData from './Data/region';
 import regionLevelData from './Data/regionLevel';
 import yearData from './Data/year';
-import Translate from 'translate-components'
-import { reactTranslateChangeLanguage } from 'translate-components'
-
-
+import Translate from 'translate-components';
+import { reactTranslateChangeLanguage } from 'translate-components';
+import $ from "jquery";
 
 
 class App extends Component {
@@ -37,20 +36,20 @@ class App extends Component {
       seranioNumber:0,
       regionName:'',
       period:'' ,
-      periodId:'',             
-    }
-    
+      periodId:'',
+      locale:'en'             
+    }    
 
   this.selectedRegionLevelId =  this.selectedRegionLevelId.bind(this);    
   this.selectedRegionId = this.selectedRegionId.bind(this);
   this.seranioRegionId = this.seranioRegionId.bind(this);
   this.selectedSeranioNumber = this.selectedSeranioNumber.bind(this);
   this.selectedYear = this.selectedYear.bind(this);
-  this.selectedIndicator = this.selectedIndicator.bind(this);  
+  this.selectedIndicator = this.selectedIndicator.bind(this); 
+  this.locale = this.locale.bind(this);  
   } 
 
-  componentDidMount(){   
-    
+  componentDidMount(){      
     regionData.getRegion().then(result=>{                  
       this.setState({region:result.data})       
       this.setState({regionName:result.data[0].name});   
@@ -76,7 +75,7 @@ class App extends Component {
   }
 
   selectedRegionLevelId(regionId){ 
-      regionData.getRegion(regionId).then(result=>{                  
+      regionData.getRegion(regionId,this.state.locale).then(result=>{                  
         this.setState({region:result.data})
         this.setState({regionName:result.data[0].name});              
     })
@@ -111,16 +110,34 @@ class App extends Component {
   selectedIndicator(indicator,indicatorName){
     this.setState({selectedIndicator:indicator});
     this.setState({selectedIndicatorName:indicatorName});    
+  } 
+  
+  locale(language){  
+    this.setState({locale:language});  
+    regionLevelData.getRegionLevel(language).then(result=>{           
+      this.setState({regionLevel:result.data})          
+    }) 
+    regionData.getRegion(1,language).then(result=>{                  
+      this.setState({region:result.data})       
+      this.setState({regionName:result.data[0].name});   
+   }) 
+   scenarioData.getScenario(6,24,language).then(result=>{ 
+     console.log(result.data);               
+    this.setState({scenario:result.data})
+    this.setState({indicator:result.data})                     
+  })  
+   
   }
  
   
-  render() {    
+  render() { 
+        
     return (
      <div className="App">                 
         <div className="row">      
-          <div className="col-md-12" >        
-            <Header />          
-          </div>             
+          <div className="col-md-12" >                           
+            <Header locale={this.locale}/>                   
+          </div>                    
         </div>
         <div className="row">       
           <div className="col-md-3 well well-sm indicator" >  

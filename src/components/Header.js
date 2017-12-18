@@ -2,16 +2,27 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Translate from 'translate-components';
 import { reactTranslateChangeLanguage } from 'translate-components';
+import $ from "jquery";
 
 class Header extends Component {
 
     constructor(props){
-        super(props); 
-                   
-    }  
+        super(props);  
+        this.translateToFinnish = this.translateToFinnish.bind(this); 
+        this.translateToEnglish = this.translateToEnglish.bind(this);                    
+    } 
     
+    translateToFinnish(){
+        this.props.locale("fi");
+    }
 
-    render () {        
+    translateToEnglish(){
+        this.props.locale("en");
+    }    
+
+    render () { 
+        $( "#translateToFinnish" ).click(this.translateToFinnish);  
+        $( "#translateToEnglish" ).click(this.translateToEnglish);     
         return (
          <div>
             <div className="row">               
@@ -28,8 +39,8 @@ class Header extends Component {
                         </div>
                         <div className="collapse navbar-collapse" id="navbar-dropdown">        
                             <ul className="nav navbar-nav navbar-right">                            
-                            <li ><a href="#" data-toggle="modal" data-target="#register-modal" className="language" onClick={reactTranslateChangeLanguage.bind(this, 'fi')} >Fi</a></li>
-                            <li ><a href="#" data-toggle="modal" data-target="#login-modal" className="language" onClick={reactTranslateChangeLanguage.bind(this, 'en')}>En</a></li>
+                            <li id="translateToFinnish" ><a href="#" data-toggle="modal" data-target="#register-modal" onClick={reactTranslateChangeLanguage.bind(this, 'fi')}>Fi</a></li>
+                            <li id="translateToEnglish"><a href="#" data-toggle="modal" data-target="#login-modal" onClick={reactTranslateChangeLanguage.bind(this, 'en')}>En</a></li>
                             </ul>
                         </div>                        
                     </div>

@@ -22,7 +22,7 @@ class S_Years extends Component {
                      <div className="list-group">
                      <label className="textfont"><Translate>Time Period</Translate> <span className="required">*</span></label> 
                         <select className="form-control"  onChange={this.selectHandler} >
-                          <option>select the year</option>
+                          <option><Translate>select the year</Translate></option>
                             {            
                             year.map(element=>
                                     element.timePeriods.map(value=>
