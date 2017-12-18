@@ -28,7 +28,7 @@
       "en":"Select Indicators",
       "fi":"Valitse indikaattorit"
     },
-    "Polar column chart(single)":{
+    "Polar  chart(single)":{
       "en":"Polar column chart(Single)",
       "fi":"Polaarinen kaavio"
     },
@@ -43,6 +43,10 @@
     "Table chart":{
       "en":"Table chart",
       "fi":"Taulukkokaavio"
+    },
+    "Required":{
+      "en":"Required",
+      "fi":"Edellytetään"
     }
    
 

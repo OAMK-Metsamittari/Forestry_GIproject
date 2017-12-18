@@ -302,7 +302,7 @@ class Graph extends Component {
                             filename="statisticTable"
                             sheet="tablexls"
                             buttonText="Download"/> 
-                            <button type="button" class="btn btn-default btn-sm btndownload" onClick={this.PrintGraph}>
+                        <button type="button" class="btn btn-default btn-sm btndownload" onClick={this.PrintGraph}>
                             <span class="glyphicon glyphicon-print"></span>                        
                         </button>                            
                         </div>                       
@@ -314,22 +314,22 @@ class Graph extends Component {
             <div id="btngraph">         
                 <div className="col-md-4"> 
                     <div className="graphRepresent" onClick={ () => this.handleClick() }>
-                        <RadioButton value="manyscenariosbar">
-                            <p className="graphName"><Translate>Table chart</Translate></p>                                
+                        <RadioButton value="manyscenariosbar">                        
+                            <p className="graphName"><img src={require("../assets/table.png")} className="chartlogo"/><Translate>Table chart</Translate></p>                                
                         </RadioButton> 
                     </div>
                 </div>    
                 <div className="col-md-4">                   
                     <div className="graphRepresent" onClick={ () => this.GraphToggle() }>                                      
                         <RadioButton value="manyscenarioschart" onChange={this.barchart}>
-                            <p className="graphName"><Translate>Bar chart</Translate></p>
+                            <p className="graphName"><img src={require("../assets/bar.png")} className="chartlogo"/><Translate>Bar chart</Translate></p>
                         </RadioButton>                          
                     </div>     
                 </div> 
                 <div className="col-md-4">                   
                     <div className="graphRepresent" onClick={ () => this.GraphToggle() }>                                      
                         <RadioButton value="singlescenario"  onChange={this.singlepolar}>
-                        <p className="graphName"><Translate>Polar column chart(single)</Translate></p> 
+                        <p className="graphName"><img src={require("../assets/pie.png")} className="chartlogo"/><Translate>Polar chart(single)</Translate></p> 
                         </RadioButton>                           
                     </div>     
                 </div>

@@ -16,7 +16,8 @@ class S_RegionLevel extends Component {
     render () {  
         const {regionLevel} =  this.props;      
         return (
-            <div className="RegionLevel">  
+            <div className="RegionLevel"> 
+                <span className="requiredHeader">* <Translate>Required</Translate></span> 
                 <h2 className="headIndicator"><Translate>Select Scenarios</Translate></h2> 
                 <label className="textfont"><Translate>Region Level</Translate></label>            
                 <div className="form-group">                    

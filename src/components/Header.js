@@ -13,6 +13,7 @@ class Header extends Component {
 
     render () {        
         return (
+         <div>
             <div className="row">               
                 <div className="col-md-12">
                 <div className="navbar navbar-custom header">
@@ -34,7 +35,8 @@ class Header extends Component {
                     </div>
                 </div>        
               </div>
-            </div>
+            </div>           
+          </div>
         )
     }
 }
