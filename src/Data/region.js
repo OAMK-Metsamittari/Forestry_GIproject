@@ -3,7 +3,7 @@ import axios from 'axios';
 function getRegion(rId,language,){
   const regionId = rId || 1;
   var language = language || "en";
-  console.log(language);
+  
   var config = {
     headers: {'Accept-Language':language}
   };

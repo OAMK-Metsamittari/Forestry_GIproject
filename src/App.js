@@ -125,7 +125,7 @@ class App extends Component {
      console.log(result.data);               
     this.setState({scenario:result.data})
     this.setState({indicator:result.data})                     
-  })  
+  })
    
   }
  

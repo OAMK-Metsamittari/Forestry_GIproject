@@ -13,10 +13,9 @@ import PrintTemplate from 'react-print';
 import fileSaver from 'file-saver';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import $ from "jquery";
+
 const ReactHighcharts = require('react-highcharts');
-
 require('highcharts/modules/exporting')(Highcharts);
-
 HighchartsMore(Highcharts)
 
 
@@ -93,10 +92,9 @@ class Graph extends Component {
          if((scenarioId.includes(element.scenarioId))!=true){       
             finalValue.map((checkelement)=>{
                 if(element.scenarioId == checkelement.scenarioId){
-                    final.push(checkelement.value);
+                    final.push(checkelement.value);                   
                 }                  
-            }) 
-            let seranioName = this.props.SeranioName[index];
+            })             
             final.push(seranioName);             
             result.push({
                 name:seranioName,
@@ -238,7 +236,7 @@ class Graph extends Component {
         if (Indicator.indexOf(obj) === -1) Indicator.push(obj);
     });  
    
-    
+   
     return (
         <div className="row well well-sm indicator"> 
             <div id="showgraph" className="col-md-12" >
@@ -282,8 +280,8 @@ class Graph extends Component {
                     </div>                    
                     <table className="table table-bordered " id="table-to-xls">                            
                         <thead>                                                               
-                            {
-                                Indicator.map(element=> 
+                            {                                
+                                IndicatorName.map(element=>
                                 <th className="indicatorHeader">{element}</th>                                                                
                                 )
                             }  
@@ -293,8 +291,7 @@ class Graph extends Component {
                                  {this.renderData(this.getValueForTable())}                                                                                  
                         </tbody>
                     </table>  
-                </div>                    
-                    
+                </div>                 
                     <div className="col-md-12">
                         <div className="col-md-8">
                         </div>

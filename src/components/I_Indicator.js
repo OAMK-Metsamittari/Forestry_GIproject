@@ -13,7 +13,7 @@ class I_Indicator extends Component {
     super(props);
     this.state = {
       totalSelectedIndicator:[],
-      totalSelectedIndicatorName:[]
+      totalSelectedIndicatorName:[]     
     }
     this.selectHandler = this.selectHandler.bind(this);
   }
@@ -23,9 +23,10 @@ class I_Indicator extends Component {
     let final = [];
     let indicatorName = [];
     let finalName = [];
-    const selectedNumberOfSeranio = this.props.seranioNumber;
-   
-    let iLen = event.target.options.length;
+    
+    const selectedNumberOfSeranio = this.props.seranioNumber;   
+    var iLen = event.target.options.length;
+
     for (var count=0; count<iLen; count++) {
         var opt = event.target.options[count];        
               
@@ -36,22 +37,33 @@ class I_Indicator extends Component {
           this.state.totalSelectedIndicatorName.splice(valueIndex,1);         
         }       
         if(opt.selected){          
-          result.push(opt.value || opt.text);
-          indicatorName.push(opt.text);
+          result.push(opt.value || opt.text);                    
         }
         
       }  
       
-    final = this.state.totalSelectedIndicator.concat(result); 
-    finalName = this.state.totalSelectedIndicatorName.concat(indicatorName);
-   
+    final = this.state.totalSelectedIndicator.concat(result).sort(); 
     
-    this.setState({totalSelectedIndicatorName:finalName});
+   
+    final.forEach(id=>{      
+      this.props.indicator.forEach(element=>{      
+        element.indicatorCategories.forEach(value=>{
+          value.indicators.forEach(indicator=>{
+             if(id==indicator.id){
+              indicatorName.push(indicator.name);
+             }
+          })
+        })
+       
+     })
+    })    
+    
+    this.setState({totalSelectedIndicatorName:indicatorName});
     this.setState({totalSelectedIndicator:final},function(){     
       if(this.state.totalSelectedIndicator.length*selectedNumberOfSeranio>20){
         alert("Maximum Choice Of Indicator is" +" " +  Math.floor(20/selectedNumberOfSeranio));
       }else{
-        let indicatorName = (this.state.totalSelectedIndicatorName);
+        let indicatorName = (this.state.totalSelectedIndicatorName);       
         this.props.selectedIndicator(final,indicatorName);       
       }
     }); 
