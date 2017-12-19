@@ -276,16 +276,17 @@ class Graph extends Component {
             <ToggleDisplay show={this.state.show} id="tablechart">   
                 <div id="printGraph">                 
                     <div>
-                       <h3 className="locationHeader" id="fileName">{this.props.regionName}({this.props.period})</h3>
+                       
                     </div>                    
-                    <table className="table table-bordered " id="table-to-xls">                            
+                    <table className="table table-bordered " id="table-to-xls">                                       
+                                              
                         <thead>                                                               
                             {                                
                                 IndicatorName.map(element=>
                                 <th className="indicatorHeader">{element}</th>                                                                
                                 )
                             }  
-                            <th> </th>                                                                                      
+                            <th>'<Translate>Location/year</Translate>':{this.props.regionName}({this.props.period}) </th>                                                                                      
                         </thead>
                        <tbody>                             
                                  {this.renderData(this.getValueForTable())}                                                                                  

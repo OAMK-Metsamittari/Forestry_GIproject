@@ -56,6 +56,10 @@
     "select the year":{
       "en":"select the year",
        "fi":"Valitse vuosi"
+    },
+    "Location/year":{
+      "en":"Location/year",
+      "fi":"Sijainti / vuosi"
     }
 
   }
