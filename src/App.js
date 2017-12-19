@@ -113,6 +113,11 @@ class App extends Component {
   } 
   
   locale(language){  
+  
+    $('#btngraph').css("display","none");
+    $("#showgraph").css("display","block");
+    $("#chart").css("display","none");
+    $("#tablechart").css("display","none");
     this.setState({locale:language});  
     regionLevelData.getRegionLevel(language).then(result=>{           
       this.setState({regionLevel:result.data})          
@@ -121,11 +126,10 @@ class App extends Component {
       this.setState({region:result.data})       
       this.setState({regionName:result.data[0].name});   
    }) 
-   scenarioData.getScenario(6,24,language).then(result=>{ 
-     console.log(result.data);               
+   scenarioData.getScenario(6,24,language).then(result=>{                    
     this.setState({scenario:result.data})
     this.setState({indicator:result.data})                     
-  })
+  })  
    
   }
  
