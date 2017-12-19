@@ -335,7 +335,8 @@ class Graph extends Component {
                         </RadioButton>                           
                     </div>     
                 </div>
-            </div>             
+            </div>
+            <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>             
         </div>      
     );   
   }
